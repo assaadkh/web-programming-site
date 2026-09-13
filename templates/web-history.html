@@ -2,32 +2,190 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Programming Portfolio</title>
+    <title>History of the Web</title>
 </head>
 <body>
+
     <header>
-        <h1>Web Programming Portfolio — Assaad Khalife</h1>
-        <p>A live site that grows one page or feature every week.</p>
+        <h1>History of the Web</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/internet-history">History of the Internet</a></li>
+                <li><a href="/web-history">History of the Web</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section>
-            <h2>Weekly Work</h2>
-            <!-- Each week you add a link here to that week's page or feature. -->
-            <ul>
-                {% for item in weekly_work %}
-                    <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
-                {% else %}
-                    <li>Week 1 — live site launched.</li>
-                {% endfor %}
-            </ul>
+            <h2>Key Milestones of the Web</h2>
+
+            <h3>Quick Summary</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Milestone Event</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1989</td>
+                        <td>Proposal for the Web</td>
+                        <td>Conceived global hypertext linking system</td>
+                    </tr>
+                    <tr>
+                        <td>1990</td>
+                        <td>First Server &amp; Browser</td>
+                        <td>Built working HTTP, HTML, and URL prototypes</td>
+                    </tr>
+                    <tr>
+                        <td>1991</td>
+                        <td>Web Goes Public</td>
+                        <td>Announced software outside CERN community</td>
+                    </tr>
+                    <tr>
+                        <td>1993</td>
+                        <td>Public Domain &amp; Mosaic</td>
+                        <td>Royalty-free code and graphical browser launch</td>
+                    </tr>
+                    <tr>
+                        <td>1994</td>
+                        <td>W3C Founded</td>
+                        <td>Established open web standards body</td>
+                    </tr>
+                    <tr>
+                        <td>1995</td>
+                        <td>JavaScript &amp; E-Commerce</td>
+                        <td>Added client-side scripting and online shopping</td>
+                    </tr>
+                    <tr>
+                        <td>1998</td>
+                        <td>Google Incorporated</td>
+                        <td>PageRank algorithm improved web navigation</td>
+                    </tr>
+                    <tr>
+                        <td>2004</td>
+                        <td>Web 2.0 &amp; Social Media</td>
+                        <td>Shifted focus to user-generated platforms</td>
+                    </tr>
+                    <tr>
+                        <td>2007</td>
+                        <td>iPhone &amp; Mobile Web</td>
+                        <td>Began mainstream mobile web browsing</td>
+                    </tr>
+                    <tr>
+                        <td>2014</td>
+                        <td>HTML5 Recommendation</td>
+                        <td>Native audio/video support replacing plugins</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h3>Detailed Timeline</h3>
+            <ol>
+                <li>
+                    <h3>1989: Proposal for the World Wide Web</h3>
+                    <p><strong>Event:</strong> Tim Berners-Lee submitted "Information Management: A Proposal" while working at CERN.</p>
+                    <p><small>It outlined a global hypertext system allowing researchers to share and link documents across different computer systems.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.w3.org/History/1989/proposal.html" target="_blank" rel="noopener">W3C Proposal Archive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>1990: First Web Server, Browser, and Webpage</h3>
+                    <p><strong>Event:</strong> Tim Berners-Lee created the first web browser (WorldWideWeb), server (nxoc01.cern.ch), and website at CERN.</p>
+                    <p><small>This proved that HTTP, HTML, and URLs worked in practice, converting hypertext concepts into functional technology.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://home.cern/science/computing/birth-web" target="_blank" rel="noopener">CERN Birth of the Web</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>1991: The Web Goes Public</h3>
+                    <p><strong>Event:</strong> Tim Berners-Lee shared the World Wide Web software publicly on the alt.hypertext newsgroup.</p>
+                    <p><small>This opened access to the public outside CERN, starting global growth and developer involvement.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt" target="_blank" rel="noopener">W3C Announcement Archive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>1994: W3C Founded</h3>
+                    <p><strong>Event:</strong> Tim Berners-Lee founded the World Wide Web Consortium (W3C) at MIT.</p>
+                    <p><small>It created an international standards organization to keep web technologies like HTML and CSS open and compatible across systems.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.w3.org/Consortium/facts" target="_blank" rel="noopener">W3C Facts</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>1995: JavaScript and E-Commerce Launch</h3>
+                    <p><strong>Event:</strong> Brendan Eich created JavaScript at Netscape, while Amazon and eBay (AuctionWeb) launched commercial operations.</p>
+                    <p><small>JavaScript allowed dynamic browser scripting while e-commerce introduced commercial buying and selling online.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.w3.org/community/webed/wiki/A_Short_History_of_JavaScript" target="_blank" rel="noopener">W3C JavaScript History</a></li>
+                        <li><a href="https://www.aboutamazon.com/our-company/select-timeline" target="_blank" rel="noopener">Amazon Company Timeline</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>1998: Incorporation of Google</h3>
+                    <p><strong>Event:</strong> Larry Page and Sergey Brin incorporated Google, launching search driven by the PageRank algorithm.</p>
+                    <p><small>Sorting sites by link relationships improved search relevance, making large volumes of web content easier to locate.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://about.google/our-story/" target="_blank" rel="noopener">Google Official History</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>2004: Rise of Web 2.0 and Social Media</h3>
+                    <p><strong>Event:</strong> Facebook launched, and O'Reilly Media popularized the term "Web 2.0".</p>
+                    <p><small>Web design shifted from static reference pages to interactive platforms built around user-generated posts and media sharing.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html" target="_blank" rel="noopener">O'Reilly Web 2.0 Article</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>2007: Launch of the iPhone</h3>
+                    <p><strong>Event:</strong> Apple released the original iPhone with a full desktop-class Safari browser.</p>
+                    <p><small>It expanded web usage to pocket devices, prompting widespread adoption of responsive site layouts.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank" rel="noopener">Apple Newsroom Archives</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <h3>2014: HTML5 Standard Published</h3>
+                    <p><strong>Event:</strong> W3C published HTML5 as an official recommendation.</p>
+                    <p><small>It standardized built-in browser support for video, audio, and interactive graphics without requiring third-party plugins like Flash.</small></p>
+                    <p><strong>Sources:</strong></p>
+                    <ul>
+                        <li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/" target="_blank" rel="noopener">W3C HTML5 Recommendation</a></li>
+                    </ul>
+                </li>
+            </ol>
         </section>
     </main>
 
-	<footer>
-		<p>Web Programming — built with Flask and deployed on Render.</p>
-		<p><small>Disclaimer: This project was created solely for educational purposes.</small></p>
-	</footer>
+    <footer>
+        <p>Web Programming — built with Flask and deployed on Render.</p>
+        <p>Disclaimer: This project was created solely for educational purposes.</p>
+    </footer>
+
 </body>
 </html>
