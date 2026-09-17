@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Key Milestones of the Internet</title>
-</head>
-<body>
-
-    <header>
-        <nav>
-            <a href="/"><button type="button">Home</button></a>
-        </nav>
-        <h1>KEY MILESTONES OF THE INTERNET</h1>
-    </header>
-    <hr>
-
-    <main>
+{% extends "base.html" %}
+{% block title %}History of the Internet (AI) — Assaad Khalife{% endblock %}
+{% block content %}
+<article>
         <section>
             <h2>Summary Table</h2>
             <table border="1">
@@ -254,14 +240,5 @@
                 <li>Stanford University Institute for Human-Centered AI (HAI): <a href="https://hai.stanford.edu/research/ai-index-report">https://hai.stanford.edu/research/ai-index-report</a></li>
             </ul>
         </section>
-    </main>
-    <hr>
-
-    <footer>
-        <nav>
-            <a href="/"><button type="button">Home</button></a>
-        </nav>
-    </footer>
-
-</body>
-</html>
+</article>
+{% endblock %}

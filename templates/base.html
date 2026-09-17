@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Web Programming Portfolio — Assaad Khalife{% endblock %}</title>
+    <link rel="stylesheet"
+	href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <h1 class="site-title"><a href="{{ url_for('home') }}">Web Programming Portfolio — Assaad Khalife</a></h1>
+            <p class="site-tagline">A live site that grows one page or feature every week.</p>
+            <nav class="site-nav">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('home') }}#weekly-work">Weekly Work</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>Web Programming — built with Flask and deployed on Render.</p>
+            <p><small>Disclaimer: This project was created solely for educational purposes.</small></p>
+        </div>
+    </footer>
+</body>
+</html>
+</html>

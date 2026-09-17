@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Key Milestones of the Web (1989 – Present)</title>
-</head>
-<body id="top">
-
-    <header>
-        <nav>
-            <a href="/"><button type="button">Home</button></a>
-            <a href="#summary-table"><button type="button">Summary Table</button></a>
-            <a href="#detailed-milestones"><button type="button">Detailed Milestones</button></a>
-        </nav>
-        <h1>KEY MILESTONES OF THE WEB (1989 – PRESENT)</h1>
-    </header>
-
-    <hr>
-
-    <main>
-        <!-- Summary Table Section -->
+{% extends "base.html" %}
+{% block title %}History of the Web (AI) — Assaad Khalife{% endblock %}
+{% block content %}
+<article>
+    <section>
         <section id="summary-table">
             <h2>Milestones Summary Table</h2>
             <p>A quick-reference overview of pivotal web milestones. Click any milestone name to jump to its detailed section.</p>
@@ -321,14 +304,5 @@
                 <p><small><a href="#top">Back to Summary Table</a></small></p>
             </article>
         </section>
-    </main>
-
-    <hr>
-
-    <footer>
-        <p><a href="#top"><button type="button">Back to Top</button></a></p>
-        <p><small>Document converted from key_milestones_of_the_web_v2.txt</small></p>
-    </footer>
-
-</body>
-</html>
+</article>
+{% endblock %}

@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>History of the Web</title>
-</head>
-<body>
-
-    <header>
-        <h1>History of the Web</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
+{% extends "base.html" %}
+{% block title %}History of the Web — Assaad Khalife{% endblock %}
+{% block content %}
+<article>
         <section>
             <h2>Key Milestones of the Web</h2>
 
@@ -281,12 +267,5 @@
                 </li>
             </ol>
         </section>
-    </main>
-
-    <footer>
-        <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>Disclaimer: This project was created solely for educational purposes.</p>
-    </footer>
-
-</body>
-</html>
+</article>
+{% endblock %}
