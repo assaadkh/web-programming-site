@@ -1,0 +1,1158 @@
+/* ==========================================================================
+   DESIGN TOKENS & UNIFIED DESIGN SYSTEM
+   Consistent Academic & Computer Engineering Theme Across All Pages
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* --- 1. Warm Engineering Paper Canvas & Ink --- */
+  --canvas-bg: #f9f8f5;          /* Warm engineering paper / ivory */
+  --canvas-surface: #ffffff;     /* Crisp white card surface */
+  --canvas-subtle: #f1f3f7;      /* Subtle muted row / pill fill */
+  
+  --ink-main: #0f172a;           /* Deep technical slate-900 */
+  --ink-muted: #475569;          /* Readable description slate-600 */
+  --ink-dim: #64748b;            /* Secondary metadata slate-500 */
+  
+  --border-rule: #e2dfd7;        /* Subtle warm technical border */
+  --border-rule-hover: #cbd5e1;  /* Darker interactive border */
+
+  /* Primary Signature Accent: Deep Academic Navy / Cobalt Blue */
+  --cobalt-main: #1e40af;        /* Deep Academic Navy */
+  --cobalt-hover: #1d4ed8;       /* Interactive Cobalt Blue */
+  --cobalt-tint: #eff4fa;        /* Soft navy tint */
+  --cobalt-border: #bfdbfe;      /* Subtle navy border */
+
+  /* --- 2. Typography --- */
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;   /* 18px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 1.875rem;  /* 30px */
+
+  /* --- 3. Structure, Spacing & Radii --- */
+  --container-max: 920px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-card-hover: 0 6px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+
+  --transition-smooth: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Utilize generous side space on larger monitors and laptops */
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 1220px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --container-max: 1400px;
+  }
+}
+
+/* ==========================================================================
+   RESETS & GLOBAL LAYOUT
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--canvas-bg);
+  color: var(--ink-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background-color: var(--cobalt-border);
+  color: var(--cobalt-main);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.main-content {
+  flex: 1;
+  padding-block: var(--space-8) var(--space-12);
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION (CONSISTENT SITE-WIDE)
+   ========================================================================== */
+
+.site-header {
+  background: linear-gradient(135deg, #0c1836 0%, #172554 100%);
+  border-bottom: 3px solid #2563eb;
+  padding-block: var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(12, 24, 54, 0.25);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.site-title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.site-title a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color var(--transition-smooth);
+}
+
+.site-title a:hover {
+  color: #93c5fd;
+}
+
+.site-tagline {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.site-tagline::before {
+  content: "DOCS // VERIFIED";
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 1px 6px;
+  background-color: rgba(37, 99, 235, 0.3);
+  color: #93c5fd;
+  border: 1px solid #3b82f6;
+  border-radius: var(--radius-sm);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-smooth);
+}
+
+.site-nav a:hover {
+  border-color: #ffffff;
+  color: #0c1836;
+  background-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   PAGE HEADINGS & SECTION HEADERS (CONSISTENT TYPOGRAPHY)
+   ========================================================================== */
+
+/* Main page h2 headings across all pages */
+.main-content h2,
+article h2:first-of-type,
+article > section:first-of-type > h2 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-6);
+  color: var(--cobalt-main);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--cobalt-main);
+}
+
+/* Sub-section headings (e.g. Quick Summary, Detailed Timeline) */
+article h3:not(ol h3):not(article h3) {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-main);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+/* Hide horizontal rules that break layout flow between cards */
+article hr,
+article > hr {
+  display: none;
+}
+
+/* ==========================================================================
+   HOMEPAGE & WEEKLY WORK CARDS
+   ========================================================================== */
+
+.main-content > section > ul,
+#weekly-work ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.main-content > section > ul > li,
+#weekly-work ul > li {
+  list-style: none;
+}
+
+.main-content > section > ul > li a,
+#weekly-work ul > li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--canvas-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-rule);
+  border-left: 4px solid var(--cobalt-main);
+  color: var(--ink-main);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-smooth);
+}
+
+.main-content > section > ul > li a::after,
+#weekly-work ul > li a::after {
+  content: "VIEW →";
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--canvas-subtle);
+  border: 1px solid var(--border-rule);
+  color: var(--cobalt-main);
+  transition: transform var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.main-content > section > ul > li a:hover,
+#weekly-work ul > li a:hover {
+  transform: translateY(-2px);
+  border-color: #3b82f6;
+  border-left-color: var(--cobalt-hover);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), var(--shadow-card-hover);
+}
+
+.main-content > section > ul > li a:hover::after,
+#weekly-work ul > li a:hover::after {
+  transform: translateX(4px);
+  background-color: var(--cobalt-tint);
+}
+
+/* ==========================================================================
+   UNIFIED MILESTONE CARDS (ALL 4 HISTORY PAGES)
+   Applies identically whether marked up as:
+   1. <ol><li> (internet-history & web-history)
+   2. <section:not(:first-of-type)> (internet-history-ai)
+   3. <article> inside #detailed-milestones (web-history-ai)
+   ========================================================================== */
+
+article {
+  width: 100%;
+}
+
+article ol {
+  list-style: none;
+  counter-reset: timeline-counter;
+}
+
+/* Master Milestone Card Base Styling */
+article ol > li,
+#detailed-milestones > article,
+article:not(:has(#detailed-milestones)) > section:not(:first-of-type) {
+  position: relative;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--canvas-surface);
+  border: 1px solid var(--border-rule);
+  border-left: 4px solid var(--cobalt-main);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+article ol > li:hover,
+#detailed-milestones > article:hover,
+article:not(:has(#detailed-milestones)) > section:not(:first-of-type):hover {
+  transform: translateY(-3px);
+  border-color: #3b82f6;
+  border-left-color: var(--cobalt-hover);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), var(--shadow-card-hover);
+}
+
+/* Master Milestone Heading Selector */
+article ol > li > h3,
+#detailed-milestones > article > h3,
+article:not(:has(#detailed-milestones)) > section:not(:first-of-type) > h2 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--cobalt-main);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  padding-bottom: 0;
+  border-bottom: none;
+  text-transform: none;
+}
+
+/* Paragraphs & Typography inside cards */
+article p {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  color: var(--ink-main);
+}
+
+article p strong {
+  font-weight: 600;
+  color: var(--ink-main);
+}
+
+article p small,
+article small {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--ink-dim);
+  line-height: 1.5;
+  margin-top: var(--space-1);
+}
+
+/* Sources & Reference Links inside cards */
+article ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+  padding-left: 0;
+}
+
+article ul li {
+  width: 100%;
+}
+
+article ul li a {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: 3px 8px;
+  background-color: var(--canvas-subtle);
+  border: 1px solid var(--border-rule);
+  border-radius: var(--radius-sm);
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: all var(--transition-smooth);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+article ul li a:hover {
+  border-color: var(--cobalt-main);
+  color: var(--cobalt-main);
+  background-color: var(--cobalt-tint);
+}
+
+/* Push footers/links to the bottom of the card for neat alignment */
+article ol > li > :last-child,
+#detailed-milestones > article > :last-child,
+article:not(:has(#detailed-milestones)) > section:not(:first-of-type) > :last-child {
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+/* Make article body content expand and fill the card height evenly */
+#detailed-milestones > article > ul {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-block: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+
+#detailed-milestones > article > ul > li {
+  width: 100%;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+#detailed-milestones > article > ul > li:last-child {
+  margin-top: auto;
+}
+
+/* Dedicated card footer for the return anchor */
+#detailed-milestones > article > p:last-child {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(226, 223, 215, 0.7);
+}
+
+#detailed-milestones > article > p:last-child a {
+  font-family: var(--font-mono);
+  font-size: 0.775rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-smooth);
+}
+
+#detailed-milestones > article > p:last-child a:hover {
+  color: var(--cobalt-main);
+  text-decoration: underline;
+}
+
+#detailed-milestones > article > p:last-child a::before {
+  content: "↑";
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   DYNAMIC MULTI-SIZE MILESTONE GRID
+   Balanced dynamic ratios so both cards fill their height and width smoothly:
+   Row 1: Feature Milestone (7 cols) + Companion (5 cols) = 12
+   Row 2: Balanced Duo (6 cols + 6 cols) = 12
+   Row 3: Companion (5 cols) + Feature Milestone (7 cols) = 12
+   Row 4: Asymmetric Shift (7 cols + 5 cols) = 12
+   Finale: Full 12-Column Grand Finale Banner
+   ========================================================================== */
+
+@media (min-width: 860px) {
+  #detailed-milestones,
+  article ol,
+  article:not(:has(#detailed-milestones)):has(> section:nth-of-type(3)) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-5);
+    align-items: stretch;
+  }
+
+  /* Full-width headers & initial tables inside the grid */
+  #detailed-milestones > h2,
+  article:not(:has(#detailed-milestones)) > header,
+  article:not(:has(#detailed-milestones)) > section:first-of-type {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  article:not(:has(#detailed-milestones)) > hr {
+    display: none;
+  }
+
+  /* --- Row 1: Feature Milestone (7) + Companion (5) = 12 --- */
+  #detailed-milestones > article:nth-of-type(8n + 1),
+  article ol > li:nth-of-type(8n + 1),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 2) {
+    grid-column: span 7;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-left-width: 5px;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 1) > h3,
+  article ol > li:nth-of-type(8n + 1) > h3,
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 2) > h2 {
+    font-size: 1.15rem;
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 2),
+  article ol > li:nth-of-type(8n + 2),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 3) {
+    grid-column: span 5;
+    border-left-color: #3b82f6;
+    background-color: var(--canvas-surface);
+    padding: var(--space-5) var(--space-5);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 2) > h3,
+  article ol > li:nth-of-type(8n + 2) > h3,
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 3) > h2 {
+    font-size: 1.05rem;
+  }
+
+  /* --- Row 2: Balanced Duo (6 + 6) = 12 --- */
+  #detailed-milestones > article:nth-of-type(8n + 3),
+  article ol > li:nth-of-type(8n + 3),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 4) {
+    grid-column: span 6;
+    padding: var(--space-5) var(--space-5);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 4),
+  article ol > li:nth-of-type(8n + 4),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 5) {
+    grid-column: span 6;
+    padding: var(--space-5) var(--space-5);
+  }
+
+  /* --- Row 3: Companion (5) + Feature Milestone (7) = 12 --- */
+  #detailed-milestones > article:nth-of-type(8n + 5),
+  article ol > li:nth-of-type(8n + 5),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 6) {
+    grid-column: span 5;
+    border-left-color: #3b82f6;
+    background-color: var(--canvas-surface);
+    padding: var(--space-5) var(--space-5);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 5) > h3,
+  article ol > li:nth-of-type(8n + 5) > h3,
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 6) > h2 {
+    font-size: 1.05rem;
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 6),
+  article ol > li:nth-of-type(8n + 6),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 7) {
+    grid-column: span 7;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-left-width: 5px;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 6) > h3,
+  article ol > li:nth-of-type(8n + 6) > h3,
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 7) > h2 {
+    font-size: 1.15rem;
+  }
+
+  /* --- Row 4: Asymmetric Shift (7 + 5) = 12 --- */
+  #detailed-milestones > article:nth-of-type(8n + 7),
+  article ol > li:nth-of-type(8n + 7),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 8) {
+    grid-column: span 7;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  #detailed-milestones > article:nth-of-type(8n + 8),
+  article ol > li:nth-of-type(8n + 8),
+  article:not(:has(#detailed-milestones)) > section:nth-of-type(8n + 9) {
+    grid-column: span 5;
+    padding: var(--space-5) var(--space-5);
+  }
+
+  /* Grand Finale Banner: When the final card is an odd orphan, span full 12 cols */
+  #detailed-milestones > article:last-child:nth-of-type(odd),
+  article ol > li:last-child:nth-of-type(odd),
+  article:has(> section:nth-of-type(3)) > section:not(:first-of-type):last-of-type:nth-of-type(odd) {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+    border: 1px solid #bfdbfe;
+    border-left: 6px solid var(--cobalt-main);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+  }
+}
+
+/* Tablet Grid (Balanced 2-Column Structure) */
+@media (min-width: 641px) and (max-width: 859px) {
+  #detailed-milestones,
+  article ol,
+  article:not(:has(#detailed-milestones)):has(> section:nth-of-type(3)) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  #detailed-milestones > h2,
+  article:not(:has(#detailed-milestones)) > header,
+  article:not(:has(#detailed-milestones)) > section:first-of-type {
+    grid-column: 1 / -1;
+  }
+
+  article:not(:has(#detailed-milestones)) > hr {
+    display: none;
+  }
+
+  #detailed-milestones > article:last-child:nth-of-type(odd),
+  article ol > li:last-child:nth-of-type(odd),
+  article:has(> section:nth-of-type(3)) > section:not(:first-of-type):last-of-type:nth-of-type(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* In-text hyperlinks */
+a {
+  color: var(--cobalt-main);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--cobalt-hover);
+}
+
+/* ==========================================================================
+   TIMELINE ROAD (TRANSFORMS TABLES VIA PURE VANILLA CSS)
+/* ==========================================================================
+   HORIZONTAL TIMELINE ROAD (WITH EXPANDING HOVER MILESTONES)
+   Transforms tables into a horizontal highway with small dates, truncated titles,
+   and hover-expansion cards that jump to the article on click.
+   ========================================================================== */
+
+table {
+  display: block;
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: auto;
+  overflow-y: visible;
+  border: none;
+  border-top: 1px solid var(--border-rule);
+  border-bottom: 1px solid var(--border-rule);
+  box-shadow: inset 0 2px 10px rgba(15, 23, 42, 0.03);
+  background: linear-gradient(180deg, #f1f3f7 0%, #f9f8f5 100%);
+  margin-block: var(--space-4) var(--space-8);
+  padding-top: 36px;
+  padding-bottom: 24px;
+  padding-inline: max(1.5rem, calc((100vw - var(--container-max)) / 2 + var(--space-6)));
+  scrollbar-width: thin;
+  scrollbar-color: var(--cobalt-border) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+thead {
+  display: none; /* Replaced by visual roadmap stations */
+}
+
+tbody {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  position: relative;
+  width: max-content;
+  min-width: 100%;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+/* Horizontal Road Track Line (The Roadway spans the entire track) */
+tbody::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 50%, #60a5fa 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.25);
+}
+
+/* Horizontal Station Cards */
+tbody tr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transform: translateZ(0);
+  isolation: isolate;
+  width: 155px;
+  min-width: 155px;
+  background-color: var(--canvas-surface);
+  border: 1px solid var(--border-rule);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+tbody tr:has(a) {
+  cursor: pointer;
+}
+
+/* Checkpoint Node Dot on the Highway */
+tbody tr::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid var(--cobalt-main);
+  box-shadow: 0 0 0 2px var(--canvas-bg);
+  transition: all var(--transition-smooth);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Stem connector from highway to station card */
+tbody tr::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 6px;
+  background-color: var(--border-rule);
+  transition: background-color var(--transition-smooth);
+  pointer-events: none;
+}
+
+/* Elevation on Hover */
+tbody tr:hover {
+  transform: translateY(-4px) translateZ(0);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.22), 0 8px 24px -4px rgba(15, 23, 42, 0.14);
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+tbody tr:hover::before {
+  background-color: var(--cobalt-main);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3.5px rgba(30, 64, 175, 0.35);
+  transform: translateX(-50%) scale(1.25);
+}
+
+tbody tr:hover::after {
+  background-color: var(--cobalt-hover);
+}
+
+/* Cell Resets */
+td {
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  display: block;
+}
+
+/* Hide all descriptions, contributions, and source buttons completely */
+tbody tr td:nth-child(n+4),
+tbody tr td:nth-child(3):last-child {
+  display: none !important;
+}
+
+/* --- 3-Column Tables (Col 1 = Year, Col 2 = Title, Col 3 = Impact) --- */
+/* Year Badge */
+tbody tr td:first-child:nth-last-child(3) {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cobalt-main);
+  background: var(--cobalt-tint);
+  border: 1px solid var(--cobalt-border);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+  display: inline-block;
+  margin-bottom: 6px;
+  pointer-events: none;
+}
+
+/* Title (Wrapped naturally across lines without ugly mid-word cutoffs) */
+tbody tr td:first-child:nth-last-child(3) + td {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink-main);
+  line-height: 1.35;
+  white-space: normal;
+  display: block;
+  text-align: center;
+}
+
+tbody tr:hover td:first-child:nth-last-child(3) + td {
+  color: var(--cobalt-main);
+}
+
+/* Hide Col 3 in 3-column tables */
+tbody tr td:first-child:nth-last-child(3) + td + td {
+  display: none !important;
+}
+
+/* --- 5-Column Tables (Col 1 = #, Col 2 = Year, Col 3 = Title, Col 4 = Summary, Col 5 = Source) --- */
+/* Hide Col 1 (#) */
+tbody tr td:first-child:nth-last-child(5) {
+  display: none !important;
+}
+
+/* Show Col 2 as Year Badge */
+tbody tr td:first-child:nth-last-child(5) + td {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cobalt-main);
+  background: var(--cobalt-tint);
+  border: 1px solid var(--cobalt-border);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+  display: inline-block;
+  margin-bottom: 6px;
+  pointer-events: none;
+}
+
+/* Show Col 3 as Title (Wrapped naturally without mid-word cutoffs) */
+tbody tr td:first-child:nth-last-child(5) + td + td {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink-main);
+  line-height: 1.35;
+  white-space: normal;
+  display: block;
+  text-align: center;
+}
+
+tbody tr:hover td:first-child:nth-last-child(5) + td + td {
+  color: var(--cobalt-main);
+}
+
+/* Title links & Full-Box Clickable Hit Area */
+tbody tr td a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+/* Stretched link overlay: expands the <a> across the entire <tr> box */
+tbody tr td a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+tbody tr:hover td a {
+  color: var(--cobalt-hover);
+  text-decoration: underline;
+}
+
+/* Offset for smooth jumping below the sticky header */
+[id],
+article[id],
+section[id],
+li[id] {
+  scroll-margin-top: 100px;
+}
+
+/* ==========================================================================
+   TARGET ILLUMINATION GLOW (WHEN CLICKED FROM THE TIMELINE ROAD)
+   Smooth border pulse animation when an article is targeted via anchor hash
+   ========================================================================== */
+
+#detailed-milestones > article:target,
+article ol > li:target,
+article:has(> section:nth-of-type(3)) > section:not(:first-of-type):target,
+[id]:not(#summary-table):not(#detailed-milestones):not(article):not(section):target {
+  border-color: #3b82f6 !important;
+  border-left-color: #1d4ed8 !important;
+  box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.35), 0 8px 20px -4px rgba(37, 99, 235, 0.18) !important;
+  animation: card-target-glow 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes card-target-glow {
+  0% {
+    border-color: #2563eb;
+    border-left-color: #1d4ed8;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.5), 0 10px 25px rgba(37, 99, 235, 0.25);
+    transform: translateY(-3px);
+  }
+  30% {
+    border-color: #3b82f6;
+    border-left-color: #2563eb;
+    box-shadow: 0 0 0 7px rgba(59, 130, 246, 0.42), 0 14px 32px rgba(30, 64, 175, 0.22);
+  }
+  70% {
+    border-color: #60a5fa;
+    border-left-color: var(--cobalt-main);
+    box-shadow: 0 0 0 4.5px rgba(96, 165, 250, 0.3), var(--shadow-card-hover);
+  }
+  100% {
+    border-color: #3b82f6;
+    border-left-color: #1d4ed8;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.35), 0 8px 20px -4px rgba(37, 99, 235, 0.18);
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   FOOTER (CONSISTENT SITE-WIDE)
+   ========================================================================== */
+
+.site-footer {
+  margin-top: auto;
+  border-top: 3px solid #2563eb;
+  background: linear-gradient(135deg, #0c1836 0%, #172554 100%);
+  padding-block: var(--space-8);
+  box-shadow: 0 -4px 20px rgba(12, 24, 54, 0.12);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.site-footer small {
+  font-size: 0.725rem;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   PHONE-FIRST & MOBILE TOUCH OPTIMIZATIONS
+   ========================================================================== */
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 14px;
+  }
+
+  .main-content {
+    padding-block: var(--space-6) var(--space-10);
+  }
+
+  /* Compact, Touch-Friendly Sticky Header on Phones */
+  .site-header {
+    position: sticky;
+    top: 0;
+    padding-block: 12px;
+  }
+
+  .site-title {
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+
+  .site-tagline {
+    font-size: 0.725rem;
+  }
+
+  .site-nav {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .site-nav a {
+    font-size: 0.75rem;
+    padding: 7px 14px;
+    min-height: 38px;
+  }
+
+  /* Touch-Friendly Weekly Work Cards on Phones */
+  .main-content > section > ul > li a,
+  #weekly-work ul > li a {
+    padding: 12px 14px;
+    font-size: 0.875rem;
+    min-height: 48px;
+  }
+
+  .main-content > section > ul > li a:active,
+  #weekly-work ul > li a:active {
+    transform: scale(0.98);
+  }
+
+  /* Mobile Horizontal Road: Swipe Carousel Ergonomics */
+  table {
+    margin-inline: -14px;
+    padding-inline: 14px;
+    width: calc(100% + 28px);
+    max-width: calc(100% + 28px);
+    left: auto;
+    right: auto;
+    margin-left: -14px;
+    margin-right: -14px;
+    padding-top: 28px;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  tbody {
+    gap: 10px;
+    padding-top: 14px;
+  }
+
+  tbody::before {
+    top: 4px;
+    left: 14px;
+    right: 14px;
+  }
+
+  tbody tr {
+    width: 130px;
+    min-width: 130px;
+    padding: 8px 10px;
+    scroll-snap-align: start;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  tbody tr::before {
+    top: -16px;
+    width: 11px;
+    height: 11px;
+  }
+
+  tbody tr::after {
+    top: -5px;
+    height: 5px;
+  }
+
+  tbody tr:active {
+    transform: scale(0.97) translateZ(0);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  }
+
+  article ol > li:active,
+  #detailed-milestones > article:active,
+  article:not(:has(#detailed-milestones)) > section:not(:first-of-type):active {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  }
+
+  /* Detailed Milestone Cards on Phones */
+  article ol > li,
+  #detailed-milestones > article,
+  article:not(:has(#detailed-milestones)) > section:not(:first-of-type) {
+    padding: 14px 14px;
+    margin-bottom: 10px;
+    border-left-width: 3px;
+  }
+
+  article ol > li > h3,
+  #detailed-milestones > article > h3,
+  article:not(:has(#detailed-milestones)) > section:not(:first-of-type) > h2 {
+    font-size: 0.95rem;
+  }
+
+  article p {
+    font-size: 0.9rem;
+  }
+
+  article ul li a {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    min-height: 32px;
+  }
+
+  .site-footer {
+    padding-block: var(--space-6);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--cobalt-main);
+  outline-offset: 2px;
+}
