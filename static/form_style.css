@@ -1,0 +1,749 @@
+/* ==========================================================================
+   FORM_STYLE.CSS — Modern Engineering Student Profile
+   Custom Designed for Assaad Khalife's Web Programming Portfolio
+   Distinct, elevated UI matching the Academic Slate & Navy Design System
+   ========================================================================== */
+
+/* Main Page Container */
+.profile-form-wrapper {
+  max-width: 900px;
+  margin-inline: auto;
+  padding-block: var(--space-4, 1rem) var(--space-8, 2rem);
+}
+
+/* Header Banner */
+.form-header {
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--border-rule, #e2dfd7);
+  border-left: 5px solid var(--cobalt-main, #1e40af);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.06);
+}
+
+.form-header-badge {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cobalt-main, #1e40af);
+  background-color: var(--cobalt-tint, #eff4fa);
+  border: 1px solid var(--cobalt-border, #bfdbfe);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.form-page-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.form-page-subtitle {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 720px;
+  margin-bottom: 1rem;
+}
+
+.form-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.meta-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Engineered Form Container */
+.engineered-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card-Based Fieldsets */
+.form-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.75rem 2rem 2rem;
+  position: relative;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.08);
+}
+
+.form-card:focus-within {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 6px 18px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* Custom Fieldset Legend */
+.form-card-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0 0.5rem;
+  margin-left: -0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.legend-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.legend-text {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.legend-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* 2-Column Responsive Grid */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+}
+
+.span-2 {
+  grid-column: 1 / -1;
+}
+
+/* Field Containers */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.input-field label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.required-star {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.label-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #64748b;
+  font-family: var(--font-mono, monospace);
+}
+
+
+
+/* Form Input Controls Styling */
+.engineered-form input[type="text"],
+.engineered-form input[type="email"],
+.engineered-form input[type="tel"],
+.engineered-form input[type="date"],
+.engineered-form input[type="time"],
+.engineered-form input[type="month"],
+.engineered-form input[type="url"],
+.engineered-form input[type="number"],
+.engineered-form select,
+.engineered-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.925rem;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.engineered-form select:not([multiple]) {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem 1.25rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.engineered-form input::placeholder,
+.engineered-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.engineered-form input:hover,
+.engineered-form select:hover,
+.engineered-form textarea:hover {
+  border-color: #94a3b8;
+  background-color: #ffffff;
+}
+
+.engineered-form input:focus,
+.engineered-form select:focus,
+.engineered-form textarea:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.engineered-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* Sub-Cards for Radio Groups */
+.sub-card {
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sub-legend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  padding: 0 0.35rem;
+}
+
+/* Pill Radios (Interactive Buttons) */
+.pill-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill-radio {
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-content {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.15s ease;
+}
+
+.pill-radio:hover .pill-content {
+  border-color: #2563eb;
+  color: #1e40af;
+  background-color: #eff6ff;
+}
+
+.pill-radio input[type="radio"]:checked + .pill-content {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: #1e40af;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Interactive Card Checkbox Grid for Skills */
+.cards-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.card-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background-color: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.16s ease;
+}
+
+.card-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkbox-indicator {
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 4px;
+  border: 1.5px solid #94a3b8;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.card-checkbox:hover {
+  border-color: #93c5fd;
+  background-color: #eff6ff;
+}
+
+.card-checkbox:hover .checkbox-indicator {
+  border-color: #2563eb;
+}
+
+.card-checkbox input[type="checkbox"]:checked ~ .checkbox-indicator {
+  background-color: #2563eb;
+  border-color: #1e40af;
+}
+
+.card-checkbox input[type="checkbox"]:checked ~ .checkbox-indicator::after {
+  content: "✓";
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.card-checkbox input[type="checkbox"]:checked {
+  background-color: #eff6ff;
+}
+
+.checkbox-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.card-checkbox input[type="checkbox"]:checked ~ .checkbox-title {
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Multi-select box styling */
+.multi-select-box {
+  min-height: 135px;
+  border-radius: 8px;
+}
+
+.multi-select-box option {
+  padding: 0.35rem 0.65rem;
+  margin-block: 2px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.multi-select-box option:checked {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Color Picker Group */
+.color-picker-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.engineered-form input[type="color"] {
+  width: 50px;
+  height: 42px;
+  padding: 2px 4px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.color-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Submission Card */
+.submission-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+.custom-checkbox-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox-consent input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+  accent-color: #2563eb;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.consent-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* Action Buttons */
+.action-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.btn-engineered-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  color: #ffffff;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-engineered-submit:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.36);
+}
+
+.btn-engineered-submit:active {
+  transform: translateY(0);
+}
+
+.btn-engineered-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #64748b;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.925rem;
+  font-weight: 600;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-engineered-reset:hover {
+  color: #dc2626;
+  border-color: #f87171;
+  background-color: #fef2f2;
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  font-size: 1rem;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-card {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+
+  .form-header {
+    padding: 1.25rem 1rem;
+  }
+
+  .form-page-title {
+    font-size: 1.35rem;
+  }
+
+  .action-buttons-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-engineered-submit,
+  .btn-engineered-reset {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   FORM STEPPER HIGHWAY (STICKY TIMELINE ROADMAP FOR PROFILE FORM)
+   Matches the horizontal timeline highway with active nodes, station cards,
+   and bidirectional hover illumination.
+   ========================================================================== */
+
+.form-stepper-roadmap {
+  position: sticky;
+  top: 0;
+  z-index: 85;
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background: rgba(246, 245, 240, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border-rule, #e2dfd7);
+  border-bottom: 2px solid var(--cobalt-main, #1e40af);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+  padding-block: 22px 18px;
+  padding-inline: max(1.5rem, calc((100vw - 900px) / 2 + 1rem));
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cobalt-border, #bfdbfe) transparent;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 2.5rem;
+  transition: top 0.15s ease-out;
+}
+
+.stepper-highway-track {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+  padding-top: 18px;
+  gap: 14px;
+  min-width: 580px;
+}
+
+/* Horizontal Track Roadway Line */
+.stepper-highway-track::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 45px;
+  right: 45px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 50%, #60a5fa 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.25);
+  z-index: 1;
+}
+
+/* Individual Stepper Checkpoint Station */
+.stepper-checkpoint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  flex: 1;
+  min-width: 100px;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+/* Vertical Stem Connector */
+.stepper-checkpoint::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 6px;
+  background-color: #cbd5e1;
+  transition: background-color 0.2s, width 0.2s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Highway Node Dot */
+.checkpoint-node {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid var(--cobalt-main, #1e40af);
+  box-shadow: 0 0 0 2px var(--canvas-bg, #f6f5f0);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Station Card */
+.checkpoint-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 10px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s;
+}
+
+.checkpoint-step {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--cobalt-main, #1e40af);
+  background: var(--cobalt-tint, #eff4fa);
+  border: 1px solid var(--cobalt-border, #bfdbfe);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+
+.checkpoint-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+/* Checkpoint Station Active & Hover Illumination */
+.stepper-checkpoint:hover .checkpoint-card,
+.stepper-checkpoint.active-step .checkpoint-card {
+  transform: translateY(-3px);
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25), 0 8px 20px -4px rgba(37, 99, 235, 0.2) !important;
+  background-color: #ffffff !important;
+}
+
+.stepper-checkpoint:hover .checkpoint-node,
+.stepper-checkpoint.active-step .checkpoint-node {
+  background-color: var(--cobalt-main, #1e40af) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.45), 0 0 12px rgba(37, 99, 235, 0.5) !important;
+  transform: translateX(-50%) scale(1.35) !important;
+}
+
+.stepper-checkpoint:hover::after,
+.stepper-checkpoint.active-step::after {
+  background-color: var(--cobalt-main, #1e40af) !important;
+  width: 3px !important;
+}
+
+.stepper-checkpoint:hover .checkpoint-step,
+.stepper-checkpoint.active-step .checkpoint-step {
+  background-color: var(--cobalt-main, #1e40af) !important;
+  color: #ffffff !important;
+  border-color: var(--cobalt-main, #1e40af) !important;
+}
+
+.stepper-checkpoint:hover .checkpoint-title,
+.stepper-checkpoint.active-step .checkpoint-title {
+  color: var(--cobalt-main, #1e40af) !important;
+}
+
+/* Form Card Scroll Alignment & Highlight Synchronization */
+.form-card,
+.submission-card {
+  scroll-margin-top: 140px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-card.form-section-highlight,
+.submission-card.form-section-highlight,
+.form-card:target,
+.submission-card:target {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28), 0 12px 32px -4px rgba(37, 99, 235, 0.18) !important;
+  transform: translateY(-2px);
+}
+

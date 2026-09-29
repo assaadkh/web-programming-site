@@ -6,16 +6,41 @@
     <title>{% block title %}Web Programming Portfolio — Assaad Khalife{% endblock %}</title>
     <link rel="stylesheet"
 	href="{{ url_for('static', filename='style.css') }}">
-    
+    {% block head %}{% endblock %}
 </head>
 <body>
     <header class="site-header">
         <div class="container header-container">
             <h1 class="site-title"><a href="{{ url_for('home') }}">Web Programming Portfolio — Assaad Khalife</a></h1>
             <p class="site-tagline">A live site that grows one page or feature every week.</p>
-            <nav class="site-nav">
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('home') }}#weekly-work">Weekly Work</a>
+            <nav class="site-nav" aria-label="Main Navigation">
+                <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('home') }}#weekly-work">Week 1</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="nav-dropdown-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="week2-menu-btn">
+                        <span>Week 2</span>
+                        <span class="dropdown-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="nav-dropdown-menu" role="menu" aria-labelledby="week2-menu-btn">
+                        <a href="{{ url_for('internet_history') }}" class="dropdown-item {% if request.endpoint == 'internet_history' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">History of the Internet</span>
+                            <span class="dropdown-item-badge">Hand-made</span>
+                        </a>
+                        <a href="{{ url_for('web_history') }}" class="dropdown-item {% if request.endpoint == 'web_history' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">History of the Web</span>
+                            <span class="dropdown-item-badge">Hand-made</span>
+                        </a>
+                        <a href="{{ url_for('internet_history_ai') }}" class="dropdown-item {% if request.endpoint == 'internet_history_ai' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">History of the Internet</span>
+                            <span class="dropdown-item-badge ai-badge">AI</span>
+                        </a>
+                        <a href="{{ url_for('web_history_ai') }}" class="dropdown-item {% if request.endpoint == 'web_history_ai' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">History of the Web</span>
+                            <span class="dropdown-item-badge ai-badge">AI</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="{{ url_for('submit_profile') }}" class="{% if request.endpoint == 'submit_profile' %}active{% endif %}">Week 4</a>
             </nav>
         </div>
     </header>
@@ -30,6 +55,251 @@
             <p><small>Disclaimer: This project was created solely for educational purposes.</small></p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dropdown Navigation Handler
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(function (dropdown) {
+                const btn = dropdown.querySelector('.nav-dropdown-btn');
+                if (btn) {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        // Close any other open dropdowns
+                        dropdowns.forEach(function (other) {
+                            if (other !== dropdown) {
+                                other.classList.remove('open');
+                                const otherBtn = other.querySelector('.nav-dropdown-btn');
+                                if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                        const isOpen = dropdown.classList.toggle('open');
+                        btn.setAttribute('aria-expanded', isOpen);
+                    });
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                dropdowns.forEach(function (dropdown) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('open');
+                        const btn = dropdown.querySelector('.nav-dropdown-btn');
+                        if (btn) btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(function (dropdown) {
+                        if (dropdown.classList.contains('open')) {
+                            dropdown.classList.remove('open');
+                            const btn = dropdown.querySelector('.nav-dropdown-btn');
+                            if (btn) {
+                                btn.setAttribute('aria-expanded', 'false');
+                                btn.focus();
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Dynamic Header Height Tracking
+            function updateHeaderMetrics() {
+                const header = document.querySelector('.site-header');
+                if (header) {
+                    const height = header.offsetHeight;
+                    document.documentElement.style.setProperty('--header-height', height + 'px');
+                }
+            }
+            window.addEventListener('resize', updateHeaderMetrics);
+            window.addEventListener('orientationchange', updateHeaderMetrics);
+            updateHeaderMetrics();
+
+            // Safe container-only horizontal scroll (never hijacks window vertical scroll)
+            function scrollElementHorizontally(container, element) {
+                if (!container || !element) return;
+                const cRect = container.getBoundingClientRect();
+                const eRect = element.getBoundingClientRect();
+                const targetLeft = container.scrollLeft + (eRect.left - cRect.left) - (cRect.width / 2) + (eRect.width / 2);
+                container.scrollTo({ left: targetLeft, behavior: 'smooth' });
+            }
+
+            // Interactive Sticky Timeline Synchronization
+            const timelineTable = document.querySelector('table');
+            const milestoneCards = document.querySelectorAll(
+                'article ol > li[id], #detailed-milestones > article[id], article:not(:has(#detailed-milestones)) > section[id^="m"]'
+            );
+
+            if (timelineTable && milestoneCards.length > 0) {
+                const trMap = {};
+                const cardMap = {};
+
+                // Map stations to IDs
+                timelineTable.querySelectorAll('tbody tr').forEach(function (tr) {
+                    const link = tr.querySelector('a[href^="#"]');
+                    if (link) {
+                        const id = link.getAttribute('href').replace('#', '');
+                        trMap[id] = tr;
+                    }
+                });
+
+                // Map cards and bind hover events
+                milestoneCards.forEach(function (card) {
+                    const id = card.id;
+                    cardMap[id] = card;
+
+                    // Hovering on card in the body illuminates timeline station
+                    card.addEventListener('mouseenter', function () {
+                        const tr = trMap[id];
+                        if (tr) {
+                            timelineTable.querySelectorAll('tbody tr.active-station').forEach(function (t) {
+                                t.classList.remove('active-station');
+                            });
+                            tr.classList.add('active-station');
+                            scrollElementHorizontally(timelineTable, tr);
+                        }
+                    });
+
+                    card.addEventListener('mouseleave', function () {
+                        const tr = trMap[id];
+                        if (tr) {
+                            tr.classList.remove('active-station');
+                        }
+                    });
+                });
+
+                // Hovering on timeline station illuminates card in the body
+                timelineTable.querySelectorAll('tbody tr').forEach(function (tr) {
+                    const link = tr.querySelector('a[href^="#"]');
+                    if (link) {
+                        const id = link.getAttribute('href').replace('#', '');
+                        const card = cardMap[id];
+                        if (card) {
+                            tr.addEventListener('mouseenter', function () {
+                                card.classList.add('target-highlight');
+                            });
+                            tr.addEventListener('mouseleave', function () {
+                                card.classList.remove('target-highlight');
+                            });
+                        }
+                    }
+                });
+
+                // Scrollspy: Active station updates as user scrolls down the page
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                const id = entry.target.id;
+                                const tr = trMap[id];
+                                if (tr && !timelineTable.querySelector('tbody tr:hover')) {
+                                    timelineTable.querySelectorAll('tbody tr.active-station').forEach(function (t) {
+                                        t.classList.remove('active-station');
+                                    });
+                                    tr.classList.add('active-station');
+                                    scrollElementHorizontally(timelineTable, tr);
+                                }
+                            }
+                        });
+                    }, {
+                        rootMargin: '-20% 0px -50% 0px',
+                        threshold: 0.15
+                    });
+
+                    milestoneCards.forEach(function (card) {
+                        observer.observe(card);
+                    });
+                }
+            }
+
+            // Interactive Form Stepper Synchronization (Profile Form)
+            const formStepper = document.querySelector('.form-stepper-roadmap');
+            const formSections = document.querySelectorAll(
+                '.engineered-form .form-card[id], .engineered-form .submission-card[id]'
+            );
+
+            if (formStepper && formSections.length > 0) {
+                const stepCheckpointMap = {};
+                const sectionMap = {};
+
+                // Map checkpoints to targets
+                formStepper.querySelectorAll('.stepper-checkpoint').forEach(function (cp) {
+                    const targetId = cp.getAttribute('data-target') || (cp.getAttribute('href') ? cp.getAttribute('href').replace('#', '') : null);
+                    if (targetId) {
+                        stepCheckpointMap[targetId] = cp;
+                    }
+                });
+
+                // Map form sections and bind card hover events
+                formSections.forEach(function (sec) {
+                    const id = sec.id;
+                    sectionMap[id] = sec;
+
+                    // Hovering on a card in the form body illuminates the stepper station
+                    sec.addEventListener('mouseenter', function () {
+                        const cp = stepCheckpointMap[id];
+                        if (cp) {
+                            formStepper.querySelectorAll('.stepper-checkpoint.active-step').forEach(function (c) {
+                                c.classList.remove('active-step');
+                            });
+                            cp.classList.add('active-step');
+                            scrollElementHorizontally(formStepper, cp);
+                        }
+                    });
+                });
+
+                // Hovering on a stepper station illuminates the corresponding form card
+                formStepper.querySelectorAll('.stepper-checkpoint').forEach(function (cp) {
+                    const targetId = cp.getAttribute('data-target') || (cp.getAttribute('href') ? cp.getAttribute('href').replace('#', '') : null);
+                    if (targetId) {
+                        const sec = sectionMap[targetId];
+                        if (sec) {
+                            cp.addEventListener('mouseenter', function () {
+                                sec.classList.add('form-section-highlight');
+                            });
+                            cp.addEventListener('mouseleave', function () {
+                                sec.classList.remove('form-section-highlight');
+                            });
+                        }
+                    }
+
+                    // Click feedback
+                    cp.addEventListener('click', function () {
+                        formStepper.querySelectorAll('.stepper-checkpoint.active-step').forEach(function (c) {
+                            c.classList.remove('active-step');
+                        });
+                        cp.classList.add('active-step');
+                    });
+                });
+
+                // Scrollspy: Active stepper checkpoint updates smoothly as user scrolls down the form
+                if ('IntersectionObserver' in window) {
+                    const formObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                const id = entry.target.id;
+                                const cp = stepCheckpointMap[id];
+                                if (cp && !formStepper.querySelector('.stepper-checkpoint:hover')) {
+                                    formStepper.querySelectorAll('.stepper-checkpoint.active-step').forEach(function (c) {
+                                        c.classList.remove('active-step');
+                                    });
+                                    cp.classList.add('active-step');
+                                    scrollElementHorizontally(formStepper, cp);
+                                }
+                            }
+                        });
+                    }, {
+                        rootMargin: '-20% 0px -40% 0px',
+                        threshold: 0.15
+                    });
+
+                    formSections.forEach(function (sec) {
+                        formObserver.observe(sec);
+                    });
+                }
+            }
+        });
+    </script>
 </body>
-</html>
 </html>

@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+
+{% block title %}Engineering Student Profile — Assaad Khalife{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-form-wrapper">
+    <header class="form-header">
+        <div class="form-header-badge">USEK • School of Engineering • GIN446</div>
+        <h1 class="form-page-title">Senior Engineering Student Profile</h1>
+        <div class="form-meta-strip">
+            <span class="meta-tag">Academic Session 2026–2027</span>
+            <span class="meta-tag">Student Portal</span>
+        </div>
+    </header>
+
+    <!-- Sticky Form Stepper Highway (Mirroring Timeline Roadmap) -->
+    <nav class="form-stepper-roadmap" aria-label="Form Sections Roadmap">
+        <div class="stepper-highway-track">
+            <a href="#step-personal" class="stepper-checkpoint active-step" data-target="step-personal">
+                <span class="checkpoint-node"></span>
+                <span class="checkpoint-card">
+                    <span class="checkpoint-step">STEP 01</span>
+                    <span class="checkpoint-title">Personal</span>
+                </span>
+            </a>
+            <a href="#step-academic" class="stepper-checkpoint" data-target="step-academic">
+                <span class="checkpoint-node"></span>
+                <span class="checkpoint-card">
+                    <span class="checkpoint-step">STEP 02</span>
+                    <span class="checkpoint-title">Academic</span>
+                </span>
+            </a>
+            <a href="#step-technical" class="stepper-checkpoint" data-target="step-technical">
+                <span class="checkpoint-node"></span>
+                <span class="checkpoint-card">
+                    <span class="checkpoint-step">STEP 03</span>
+                    <span class="checkpoint-title">Technical</span>
+                </span>
+            </a>
+            <a href="#step-project" class="stepper-checkpoint" data-target="step-project">
+                <span class="checkpoint-node"></span>
+                <span class="checkpoint-card">
+                    <span class="checkpoint-step">STEP 04</span>
+                    <span class="checkpoint-title">Project</span>
+                </span>
+            </a>
+            <a href="#step-submit" class="stepper-checkpoint" data-target="step-submit">
+                <span class="checkpoint-node"></span>
+                <span class="checkpoint-card">
+                    <span class="checkpoint-step">STEP 05</span>
+                    <span class="checkpoint-title">Submit</span>
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <form action="{{ url_for('submit_profile') }}" method="post" class="engineered-form">
+        <input type="hidden" name="form_version" value="2026-2027">
+
+        <fieldset id="step-personal" class="form-card">
+            <legend class="form-card-legend">
+                <span class="legend-num">01</span>
+                <span class="legend-text">Personal Information</span>
+            </legend>
+
+            <div class="form-grid-2">
+                <div class="input-field">
+                    <label for="student_id">Student ID <span class="required-star">*</span></label>
+                    <input 
+                        type="text" 
+                        id="student_id" 
+                        name="student_id" 
+                        placeholder="202312345" 
+                        pattern="[0-9]{9}" 
+                        minlength="9" 
+                        maxlength="9" 
+                        inputmode="numeric" 
+                        title="Student ID must be exactly 9 digits" 
+                        required>
+                </div>
+
+                <div class="input-field">
+                    <label for="fullname">Full Name <span class="required-star">*</span></label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        placeholder="First name and last name" 
+                        required>
+                </div>
+
+                <div class="input-field">
+                    <label for="email">USEK Email <span class="required-star">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="student@net.usek.edu.lb" 
+                        pattern=".+@net\.usek\.edu\.lb" 
+                        title="Must end with @net.usek.edu.lb" 
+                        required>
+                </div>
+
+                <div class="input-field">
+                    <label for="phone">Mobile Phone</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+961 70 123456" 
+                        pattern="(\+961|0)?[0-9\s\-]{7,10}">
+                </div>
+
+                <div class="input-field">
+                    <label for="birthdate">Date of Birth</label>
+                    <input 
+                        type="date" 
+                        id="birthdate" 
+                        name="birthdate">
+                </div>
+
+                <div class="input-field">
+                    <label for="portfolio">GitHub Profile</label>
+                    <input 
+                        type="url" 
+                        id="portfolio" 
+                        name="portfolio" 
+                        placeholder="https://github.com/username">
+                </div>
+
+                <div class="input-field span-2">
+                    <label for="gin446">GIN446 Website</label>
+                    <input 
+                        type="url" 
+                        id="gin446" 
+                        name="gin446" 
+                        placeholder="https://your-app-name.onrender.com">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="step-academic" class="form-card">
+            <legend class="form-card-legend">
+                <span class="legend-num">02</span>
+                <span class="legend-text">Academic Information</span>
+            </legend>
+
+            <div class="form-grid-2">
+                <div class="input-field span-2">
+                    <label for="major">Engineering Major <span class="required-star">*</span></label>
+                    <select id="major" name="major" required>
+                        <option value="" disabled selected>-- Select your engineering major --</option>
+                        <option value="computer">Computer Engineering</option>
+                        <option value="electrical">Electrical Engineering</option>
+                        <option value="biomedical">Biomedical Engineering</option>
+                        <option value="telecommunications">Telecommunications Engineering</option>
+                        <option value="mechanical">Mechanical Engineering</option>
+                        <option value="civil">Civil Engineering</option>
+                        <option value="chemical">Chemical Engineering</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="gpa">Current GPA / 100 <span class="required-star">*</span></label>
+                    <input 
+                        type="number" 
+                        id="gpa" 
+                        name="gpa" 
+                        placeholder="85.50" 
+                        min="40" 
+                        max="100" 
+                        step="0.01" 
+                        required>
+                </div>
+
+                <div class="input-field">
+                    <label for="credits">Credits Completed</label>
+                    <input 
+                        type="number" 
+                        id="credits" 
+                        name="credits" 
+                        placeholder="110" 
+                        min="0" 
+                        max="148" 
+                        step="1">
+                </div>
+
+                <fieldset class="sub-card span-2">
+                    <legend class="sub-legend">Expected Graduation</legend>
+                    <div class="pill-radio-group">
+                        <label class="pill-radio" for="grad_spring">
+                            <input type="radio" id="grad_spring" name="graduation" value="spring">
+                            <span class="pill-content">Spring</span>
+                        </label>
+                        <label class="pill-radio" for="grad_summer">
+                            <input type="radio" id="grad_summer" name="graduation" value="summer">
+                            <span class="pill-content">Summer</span>
+                        </label>
+                        <label class="pill-radio" for="grad_fall">
+                            <input type="radio" id="grad_fall" name="graduation" value="fall">
+                            <span class="pill-content">Fall</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="input-field">
+                    <label for="graduation_month">Expected Graduation Month &amp; Year</label>
+                    <input 
+                        type="month" 
+                        id="graduation_month" 
+                        name="graduation_month">
+                </div>
+
+                <fieldset class="sub-card">
+                    <legend class="sub-legend">Internship Completed?</legend>
+                    <div class="pill-radio-group">
+                        <label class="pill-radio" for="internship_yes">
+                            <input type="radio" id="internship_yes" name="internship_completed" value="yes">
+                            <span class="pill-content">Yes</span>
+                        </label>
+                        <label class="pill-radio" for="internship_no">
+                            <input type="radio" id="internship_no" name="internship_completed" value="no">
+                            <span class="pill-content">No</span>
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </fieldset>
+
+        <fieldset id="step-technical" class="form-card">
+            <legend class="form-card-legend">
+                <span class="legend-num">03</span>
+                <span class="legend-text">Technical Background</span>
+            </legend>
+
+            <div class="input-field span-2">
+                <label>Engineering Experience Areas</label>
+                <div class="cards-checkbox-grid">
+                    <label class="card-checkbox" for="skill_programming">
+                        <input type="checkbox" id="skill_programming" name="skills" value="programming">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Programming</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_embedded">
+                        <input type="checkbox" id="skill_embedded" name="skills" value="embedded-systems">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Embedded Systems</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_electronics">
+                        <input type="checkbox" id="skill_electronics" name="skills" value="electronics">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Electronics</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_networks">
+                        <input type="checkbox" id="skill_networks" name="skills" value="computer-networks">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Computer Networks</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_telecom">
+                        <input type="checkbox" id="skill_telecom" name="skills" value="telecommunications">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Telecommunications</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_biomedical">
+                        <input type="checkbox" id="skill_biomedical" name="skills" value="biomedical-instrumentation">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Biomedical Instrumentation</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_ai">
+                        <input type="checkbox" id="skill_ai" name="skills" value="artificial-intelligence-machine-learning">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">AI / Machine Learning</span>
+                    </label>
+
+                    <label class="card-checkbox" for="skill_signal">
+                        <input type="checkbox" id="skill_signal" name="skills" value="signal-processing">
+                        <span class="checkbox-indicator"></span>
+                        <span class="checkbox-title">Signal Processing</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-grid-2">
+                <div class="input-field">
+                    <label for="language">Primary Programming Language</label>
+                    <select id="language" name="language">
+                        <option value="">Select a language...</option>
+                        <option value="Python">Python</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="C#">C#</option>
+                        <option value="MATLAB">MATLAB</option>
+                        <option value="Rust">Rust</option>
+                        <option value="Go">Go</option>
+                        <option value="SQL">SQL</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="software">Engineering Software Used</label>
+                    <select id="software" name="software" multiple size="6" class="multi-select-box">
+                        <option value="MATLAB">MATLAB</option>
+                        <option value="Simulink">Simulink</option>
+                        <option value="LabVIEW">LabVIEW</option>
+                        <option value="LTspice">LTspice</option>
+                        <option value="Vivado">Vivado</option>
+                        <option value="SolidWorks">SolidWorks</option>
+                        <option value="AutoCAD">AutoCAD</option>
+                        <option value="Proteus">Proteus</option>
+                        <option value="Wireshark">Wireshark</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="step-project" class="form-card">
+            <legend class="form-card-legend">
+                <span class="legend-num">04</span>
+                <span class="legend-text">Final Year Project</span>
+            </legend>
+
+            <div class="form-grid-2">
+                <div class="input-field span-2">
+                    <label for="project_title">Proposed Project Title</label>
+                    <input 
+                        type="text" 
+                        id="project_title" 
+                        name="project_title" 
+                        placeholder="Enter project title">
+                </div>
+
+                <div class="input-field span-2">
+                    <label for="project_area">Preferred Project Area</label>
+                    <select id="project_area" name="project_area">
+                        <option value="" disabled selected>-- Select a project area --</option>
+                        <optgroup label="Computer Engineering">
+                            <option value="artificial-intelligence">Artificial Intelligence</option>
+                            <option value="web-applications">Web Applications</option>
+                            <option value="cybersecurity">Cybersecurity</option>
+                            <option value="internet-of-things">Internet of Things</option>
+                        </optgroup>
+                        <optgroup label="Electrical Engineering">
+                            <option value="power-systems">Power Systems</option>
+                            <option value="renewable-energy">Renewable Energy</option>
+                            <option value="control-systems">Control Systems</option>
+                        </optgroup>
+                        <optgroup label="Biomedical Engineering">
+                            <option value="medical-imaging">Medical Imaging</option>
+                            <option value="biosensors">Biosensors</option>
+                            <option value="medical-devices">Medical Devices</option>
+                        </optgroup>
+                        <optgroup label="Telecommunications Engineering">
+                            <option value="wireless-communications">Wireless Communications</option>
+                            <option value="5g-6g-networks">5G / 6G Networks</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="team_size">Preferred Team Size</label>
+                    <input 
+                        type="number" 
+                        id="team_size" 
+                        name="team_size" 
+                        min="1" 
+                        max="5" 
+                        value="2">
+                </div>
+
+                <div class="input-field">
+                    <label for="project_color">Dashboard Color</label>
+                    <div class="color-picker-group">
+                        <input 
+                            type="color" 
+                            id="project_color" 
+                            name="project_color" 
+                            value="#1e40af">
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <label for="meeting_date">Preferred Meeting Date</label>
+                    <input 
+                        type="date" 
+                        id="meeting_date" 
+                        name="meeting_date">
+                </div>
+
+                <div class="input-field">
+                    <label for="meeting_time">Preferred Meeting Time</label>
+                    <input 
+                        type="time" 
+                        id="meeting_time" 
+                        name="meeting_time">
+                </div>
+            </div>
+        </fieldset>
+
+        <div id="step-submit" class="submission-card">
+            <div class="consent-row">
+                <label class="custom-checkbox-consent" for="confirmation">
+                    <input 
+                        type="checkbox" 
+                        id="confirmation" 
+                        name="confirmation" 
+                        required>
+                    <span class="consent-indicator"></span>
+                    <span class="consent-text">I confirm that the information provided is accurate.</span>
+                </label>
+            </div>
+
+            <div class="action-buttons-group">
+                <button type="submit" class="btn-engineered-submit">Submit Profile</button>
+                <button type="reset" class="btn-engineered-reset">Clear Form</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

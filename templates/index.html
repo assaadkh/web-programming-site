@@ -3,13 +3,97 @@
 {% block title %}Home — My Web Programming Portfolio{% endblock %}
 
 {% block content %}
-<section>
+<section id="weekly-work">
     <h2>Weekly Work</h2>
-    <ul>
+    {% set card_meta = {
+        '/': {
+            'cat': 'Deployment & Core',
+            'desc': 'Full-stack Flask web application deployed live on Render with unified base templates, mobile-first responsive layout, and custom CSS design system.',
+            'tags': ['Flask 3.0', 'Render', 'Live Production'],
+            'action': 'View Deployment',
+            'variant': 'card-featured',
+            'bg': 'bg_launch.jpg'
+        },
+        '/internet-history': {
+            'cat': 'Networking History',
+            'desc': 'Tracing computer networking from 1969 ARPANET packet switching to modern fiber backbones across 16 interactive milestone checkpoints.',
+            'tags': ['ARPANET', 'TCP/IP', '16 Milestones'],
+            'action': 'Explore Timeline',
+            'variant': 'card-featured',
+            'bg': 'bg_internet.jpg'
+        },
+        '/web-history': {
+            'cat': 'World Wide Web',
+            'desc': 'CERN origins, Tim Berners-Lee, HTML standard, and browser revolution across 16 foundational milestones with the visual road map.',
+            'tags': ['CERN', 'HTML', 'WWW', '16 Milestones'],
+            'action': 'Explore Timeline',
+            'variant': 'card-companion',
+            'bg': 'bg_web.jpg'
+        },
+        '/internet-history-ai': {
+            'cat': 'AI Synthesis',
+            'desc': 'Machine-assisted architectural analysis of distributed network evolution, evaluating protocol design and routing through an AI lens.',
+            'tags': ['AI Synthesis', 'Distributed Systems', 'Smart Road'],
+            'action': 'Explore AI Analysis',
+            'variant': 'card-companion',
+            'bg': 'bg_internet_ai.jpg'
+        },
+        '/web-history-ai': {
+            'cat': 'Intelligent Web',
+            'desc': 'AI analysis tracing the web from static hypertext to modern generative web platforms and autonomous agent interfaces.',
+            'tags': ['Generative Web', 'Agentic Web', 'AI Curated'],
+            'action': 'Explore AI Analysis',
+            'variant': 'card-featured',
+            'bg': 'bg_web_ai.jpg'
+        },
+        '/submit-profile': {
+            'cat': 'Interactive Portal',
+            'desc': 'Interactive student profile registration portal with server-side form validation, multi-select software skills, and dynamic profile generation.',
+            'tags': ['HTTP POST', 'Form Validation', 'Dynamic Profile'],
+            'action': 'Open Profile Form',
+            'variant': 'card-featured',
+            'bg': 'bg_profile.jpg'
+        }
+    } %}
+    <ul class="weekly-bento-grid">
         {% for item in weekly_work %}
-            <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
+            {% set meta = card_meta.get(item.url, {
+                'cat': 'Weekly Milestone',
+                'desc': 'Interactive portfolio milestone and coursework deliverable.',
+                'tags': ['Web Programming'],
+                'action': 'View Work',
+                'variant': 'card-companion',
+                'bg': 'bg_launch.jpg'
+            }) %}
+            <li class="weekly-bento-item {{ meta.variant }}" {% if item.week == 1 %}id="week-1"{% endif %}>
+                <a href="{{ item.url }}" class="weekly-card-link" style="--card-bg-img: url('{{ url_for('static', filename='images/backgrounds/' ~ meta.bg) }}')">
+                    <div class="weekly-card-header">
+                        <span class="weekly-card-badge">Week {{ item.week }}</span>
+                        <span class="weekly-card-cat">{{ meta.cat }}</span>
+                    </div>
+                    <h3 class="weekly-card-title">Week {{ item.week }} — {{ item.title }}</h3>
+                    <p class="weekly-card-desc">{{ meta.desc }}</p>
+                    <div class="weekly-card-footer">
+                        <div class="weekly-card-tags">
+                            {% for tag in meta.tags %}
+                                <span class="weekly-card-tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        <span class="weekly-card-btn">{{ meta.action }} →</span>
+                    </div>
+                </a>
+            </li>
         {% else %}
-            <li>Week 1 — live site launched.</li>
+            <li class="weekly-bento-item card-featured" id="week-1">
+                <a href="/" class="weekly-card-link" style="--card-bg-img: url('{{ url_for('static', filename='images/backgrounds/bg_launch.jpg') }}')">
+                    <div class="weekly-card-header">
+                        <span class="weekly-card-badge">Week 1</span>
+                        <span class="weekly-card-cat">Deployment & Core</span>
+                    </div>
+                    <h3 class="weekly-card-title">Week 1 — Live site launched</h3>
+                    <p class="weekly-card-desc">Full-stack Flask web application deployed live on Render.</p>
+                </a>
+            </li>
         {% endfor %}
     </ul>
 </section>

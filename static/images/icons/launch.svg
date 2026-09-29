@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <filter id="shadow-launch" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4.5" flood-color="#0f172a" flood-opacity="0.10" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#0f172a" flood-opacity="0.05" />
+    </filter>
+    <linearGradient id="rocket-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="35%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <linearGradient id="flame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+  </defs>
+
+  <!-- Big White Squircle Tile -->
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="#ffffff" filter="url(#shadow-launch)" />
+
+  <!-- Fiery Exhaust Jet (Large & Dynamic) -->
+  <path d="M 31 69 C 18 78 12 87 15 90 C 18 91 27 85 37 72 Z" fill="url(#flame-grad)" />
+  <circle cx="13" cy="91" r="3.5" fill="#facc15" />
+  <circle cx="24" cy="88" r="2.5" fill="#f97316" />
+
+  <!-- Rocket Left Fin -->
+  <path d="M 33 49 L 18 58 C 17 68 23 74 32 74 L 40 64 Z" fill="#0891b2" />
+  <!-- Rocket Right Fin -->
+  <path d="M 60 22 L 69 7 C 78 8 84 14 84 23 L 73 32 Z" fill="#0891b2" />
+
+  <!-- Rocket Main Fuselage (Large, Bold & Aerodynamic) -->
+  <path d="M 83 17 C 70 11 44 28 36 48 L 61 73 C 81 65 98 39 90 26 C 88 20 85 18 83 17 Z" fill="url(#rocket-grad)" />
+
+  <!-- Fuselage Highlight Shimmer -->
+  <path d="M 83 17 C 73 13 54 25 43 42 L 53 52 C 70 34 83 23 83 17 Z" fill="#ffffff" opacity="0.35" />
+
+  <!-- Circular Porthole Window -->
+  <circle cx="65" cy="38" r="8.5" fill="#ffffff" />
+  <circle cx="65" cy="38" r="5.5" fill="#0284c7" />
+  <circle cx="67" cy="36" r="2" fill="#ffffff" />
+
+  <!-- Cosmic Launch Sparkles -->
+  <path d="M 88 12 Q 88 17 83 17 Q 88 17 88 22 Q 88 17 93 17 Q 88 17 88 12 Z" fill="#38bdf8" />
+  <circle cx="19" cy="28" r="3" fill="#f59e0b" />
+  <circle cx="48" cy="14" r="2.5" fill="#94a3b8" />
+</svg>
