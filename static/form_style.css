@@ -47,13 +47,6 @@
   margin-bottom: 0.5rem;
 }
 
-.form-page-subtitle {
-  font-size: 0.95rem;
-  color: #475569;
-  line-height: 1.6;
-  max-width: 720px;
-  margin-bottom: 1rem;
-}
 
 .form-meta-strip {
   display: flex;
@@ -130,12 +123,6 @@
   letter-spacing: -0.01em;
 }
 
-.legend-desc {
-  font-size: 0.875rem;
-  color: #64748b;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
 
 /* 2-Column Responsive Grid */
 .form-grid-2 {
@@ -169,12 +156,6 @@
   font-weight: 700;
 }
 
-.label-hint {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #64748b;
-  font-family: var(--font-mono, monospace);
-}
 
 
 
@@ -414,12 +395,6 @@
   background-color: #ffffff;
 }
 
-.color-code {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
-  color: #64748b;
-  font-weight: 600;
-}
 
 /* Submission Card */
 .submission-card {
@@ -517,9 +492,6 @@
   transform: translateY(-1px);
 }
 
-.btn-icon {
-  font-size: 1rem;
-}
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {

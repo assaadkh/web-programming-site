@@ -38,13 +38,11 @@ Reads the exact field `name` values from the profile form; `skills` and
       {% if data.get('phone') %}<span>☎ {{ data.get('phone') }}</span>{% endif %}
       {% if data.get('birthdate') %}<span>🎂 {{ data.get('birthdate') }}</span>{% endif %}
     </p>
+    {% if data.get('portfolio') %}
     <p class="profile-contact">
-      {% if data.get('portfolio') %}<span
-        >🐙 <a href="{{ data.get('portfolio') }}">GitHub</a></span
-      >{% endif %} {% if data.get('gin446') %}<span
-        >🔗 <a href="{{ data.get('gin446') }}">GIN446 site</a></span
-      >{% endif %}
+      <span>🐙 <a href="{{ data.get('portfolio') }}">GitHub</a></span>
     </p>
+    {% endif %}
   </header>
 
   <section>
@@ -118,10 +116,6 @@ Reads the exact field `name` values from the profile form; `skills` and
       <dd><span class="swatch"></span> {{ data.get('project_color') }}</dd>
       {% endif %}
     </dl>
-    {% if data.get('description') %}
-    <p style="margin-top: 0.8rem"><strong>Description</strong></p>
-    <p>{{ data.get('description') }}</p>
-    {% endif %}
   </section>
 
   {% if data.get('form_version') %}
