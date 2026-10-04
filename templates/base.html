@@ -300,6 +300,22 @@
                     });
                 }
             }
+
+            // Horizontal Mouse Wheel Scroll for All Timelines & Steppers
+            const horizontalScrollbars = document.querySelectorAll(
+                'table, .form-stepper-roadmap, .stepper-highway-track, .quiz-stepper-roadmap'
+            );
+            horizontalScrollbars.forEach(function (el) {
+                el.addEventListener('wheel', function (e) {
+                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && el.scrollWidth > el.clientWidth) {
+                        const maxScroll = el.scrollWidth - el.clientWidth;
+                        if ((e.deltaY > 0 && el.scrollLeft < maxScroll) || (e.deltaY < 0 && el.scrollLeft > 0)) {
+                            e.preventDefault();
+                            el.scrollLeft += e.deltaY;
+                        }
+                    }
+                }, { passive: false });
+            });
         });
     </script>
 </body>
