@@ -79,29 +79,28 @@
    ========================================================================== */
 
 .quiz-stepper-roadmap {
-  position: sticky;
-  top: calc(var(--header-height, 64px) + 8px);
-  z-index: 80;
+  position: relative;
+  max-width: 880px;
+  margin-inline: auto;
   margin-bottom: 2rem;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 0.85rem 1.25rem 0.75rem;
+  background-color: var(--canvas-surface, #ffffff);
   border: 1px solid var(--border-rule, #e2dfd7);
-  border-radius: 12px;
-  box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.06);
 }
 
 .stepper-highway-track {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   overflow-x: auto;
+  overflow-y: visible;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-top: 1.15rem;
-  padding-bottom: 0.6rem;
+  padding-top: 10px;
+  padding-bottom: 4px;
   gap: 0.5rem;
 }
 
@@ -113,7 +112,7 @@
 .stepper-highway-track::before {
   content: "";
   position: absolute;
-  top: calc(1.15rem + 8px);
+  top: 18px;
   left: 20px;
   right: 20px;
   height: 2px;
