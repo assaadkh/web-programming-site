@@ -11,37 +11,57 @@
 <body>
     <header class="site-header">
         <div class="container header-container">
-            <h1 class="site-title"><a href="{{ url_for('home') }}">Web Programming Portfolio — Assaad Khalife</a></h1>
-            <p class="site-tagline">A live site that grows one page or feature every week.</p>
+            <div class="header-brand">
+                <h1 class="site-title"><a href="{{ url_for('home') }}">Web Programming Portfolio — Assaad Khalife</a></h1>
+                <p class="site-tagline">A live site that grows one page or feature every week.</p>
+            </div>
             <nav class="site-nav" aria-label="Main Navigation">
                 <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
-                <a href="{{ url_for('home') }}#weekly-work">Week 1</a>
                 <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="week2-menu-btn">
-                        <span>Week 2</span>
+                    <button type="button" class="nav-dropdown-btn nav-burger-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai', 'submit_profile', 'quiz'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="weeks-menu-btn" aria-label="Coursework Weeks Menu">
+                        <span class="hamburger-icon" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span>Weeks</span>
                         <span class="dropdown-chevron" aria-hidden="true">▾</span>
                     </button>
-                    <div class="nav-dropdown-menu" role="menu" aria-labelledby="week2-menu-btn">
-                        <a href="{{ url_for('internet_history') }}" class="dropdown-item {% if request.endpoint == 'internet_history' %}active{% endif %}" role="menuitem">
+                    <div class="nav-dropdown-menu weeks-dropdown-menu" role="menu" aria-labelledby="weeks-menu-btn">
+                        <div class="dropdown-header-label">Coursework &amp; Deliverables</div>
+                        <a href="{{ url_for('home') }}#weekly-work" class="dropdown-item" role="menuitem">
+                            <span class="dropdown-item-title">Week 1 — Live Site Launch</span>
+                            <span class="dropdown-item-badge">Week 1</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-subgroup-label">Week 2 — History of Internet &amp; Web</div>
+                        <a href="{{ url_for('internet_history') }}" class="dropdown-item dropdown-subitem {% if request.endpoint == 'internet_history' %}active{% endif %}" role="menuitem">
                             <span class="dropdown-item-title">History of the Internet</span>
                             <span class="dropdown-item-badge">Hand-made</span>
                         </a>
-                        <a href="{{ url_for('web_history') }}" class="dropdown-item {% if request.endpoint == 'web_history' %}active{% endif %}" role="menuitem">
+                        <a href="{{ url_for('web_history') }}" class="dropdown-item dropdown-subitem {% if request.endpoint == 'web_history' %}active{% endif %}" role="menuitem">
                             <span class="dropdown-item-title">History of the Web</span>
                             <span class="dropdown-item-badge">Hand-made</span>
                         </a>
-                        <a href="{{ url_for('internet_history_ai') }}" class="dropdown-item {% if request.endpoint == 'internet_history_ai' %}active{% endif %}" role="menuitem">
+                        <a href="{{ url_for('internet_history_ai') }}" class="dropdown-item dropdown-subitem {% if request.endpoint == 'internet_history_ai' %}active{% endif %}" role="menuitem">
                             <span class="dropdown-item-title">History of the Internet</span>
                             <span class="dropdown-item-badge ai-badge">AI</span>
                         </a>
-                        <a href="{{ url_for('web_history_ai') }}" class="dropdown-item {% if request.endpoint == 'web_history_ai' %}active{% endif %}" role="menuitem">
+                        <a href="{{ url_for('web_history_ai') }}" class="dropdown-item dropdown-subitem {% if request.endpoint == 'web_history_ai' %}active{% endif %}" role="menuitem">
                             <span class="dropdown-item-title">History of the Web</span>
                             <span class="dropdown-item-badge ai-badge">AI</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url_for('submit_profile') }}" class="dropdown-item {% if request.endpoint == 'submit_profile' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">Week 4 — Student Profile Form</span>
+                            <span class="dropdown-item-badge">Week 4</span>
+                        </a>
+                        <a href="{{ url_for('quiz') }}" class="dropdown-item {% if request.endpoint == 'quiz' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">Week 5 — JavaScript &amp; DOM Quiz</span>
+                            <span class="dropdown-item-badge">Week 5</span>
                         </a>
                     </div>
                 </div>
-                <a href="{{ url_for('submit_profile') }}" class="{% if request.endpoint == 'submit_profile' %}active{% endif %}">Week 4</a>
-                <a href="{{ url_for('quiz') }}" class="{% if request.endpoint == 'quiz' %}active{% endif %}">Week 5</a>
             </nav>
         </div>
     </header>
@@ -76,6 +96,14 @@
                         });
                         const isOpen = dropdown.classList.toggle('open');
                         btn.setAttribute('aria-expanded', isOpen);
+                    });
+
+                    // Close dropdown when a navigation item inside is clicked
+                    dropdown.querySelectorAll('.dropdown-item').forEach(function (item) {
+                        item.addEventListener('click', function () {
+                            dropdown.classList.remove('open');
+                            btn.setAttribute('aria-expanded', 'false');
+                        });
                     });
                 }
             });

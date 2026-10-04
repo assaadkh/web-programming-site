@@ -124,7 +124,7 @@ body {
 .site-header {
   background: linear-gradient(135deg, #0c1836 0%, #172554 100%);
   border-bottom: 3px solid #2563eb;
-  padding-block: var(--space-6);
+  padding-block: var(--space-5);
   position: relative;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(12, 24, 54, 0.25);
@@ -132,8 +132,18 @@ body {
 
 .header-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.header-brand {
+  display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 3px;
+  min-width: 0;
 }
 
 .site-title {
@@ -142,6 +152,8 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
 }
 
 .site-title a {
@@ -158,14 +170,15 @@ body {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   color: #cbd5e1;
+  margin: 0;
 }
 
 .site-nav {
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-2);
+  margin-top: 0;
+  flex-shrink: 0;
 }
 
 .site-nav > a,
@@ -326,6 +339,69 @@ body {
   background-color: rgba(147, 51, 234, 0.22);
   color: #d8b4fe;
   border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* Hamburger Icon inside Burger Button */
+.nav-burger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hamburger-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 14px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.hamburger-icon span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+/* Weeks Dropdown Menu */
+.weeks-dropdown-menu {
+  right: 0;
+  left: auto;
+  min-width: min(340px, calc(100vw - 28px));
+  padding: 8px 6px;
+}
+
+.dropdown-header-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #93c5fd;
+  padding: 6px 12px 2px;
+}
+
+.dropdown-subgroup-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  padding: 4px 12px 2px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(96, 165, 250, 0.18);
+  margin-block: 4px;
+}
+
+.dropdown-item.dropdown-subitem {
+  padding-left: 20px !important;
 }
 
 /* Ensure sticky header doesn't cover section targets */
@@ -1497,6 +1573,12 @@ html, body {
     padding-block: 12px;
   }
 
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
   .site-title {
     font-size: 1.05rem;
     line-height: 1.25;
@@ -1508,13 +1590,22 @@ html, body {
 
   .site-nav {
     gap: 8px;
-    margin-top: 6px;
+    margin-top: 2px;
+    width: 100%;
+    justify-content: flex-start;
   }
 
-  .site-nav a {
+  .site-nav a,
+  .site-nav .nav-dropdown-btn {
     font-size: 0.75rem;
     padding: 7px 14px;
     min-height: 38px;
+  }
+
+  .weeks-dropdown-menu {
+    left: 0;
+    right: auto;
+    min-width: min(340px, calc(100vw - 28px));
   }
 
   /* Touch-Friendly Weekly Work Cards on Phones */
