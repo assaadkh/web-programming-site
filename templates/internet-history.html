@@ -2,237 +2,314 @@
 {% block title %}History of the Internet — Assaad Khalife{% endblock %}
 {% block content %}
 <article>
-        <section>
-            <h2>Key Milestones of the Internet</h2>
+    <section>
+        <header class="timeline-intro-banner">
+            <h2>History of the Internet: Networks, Protocols &amp; Infrastructure</h2>
+            <p class="lead-text">
+                The Internet is the global system of interconnected computer networks that communicate using the Internet Protocol Suite (TCP/IP). Engineered from foundational research sponsored by the U.S. Department of Defense's Advanced Research Projects Agency (DARPA) in the late 1960s, the Internet emerged to solve the challenge of robust, survivable, and decentralized packet-switched communication across heterogeneous hardware platforms.
+            </p>
+            <p>
+                Unlike the World Wide Web—which is an application-layer service composed of interlinked hypertext documents and media—the Internet forms the underlying telecommunications infrastructure, routing protocols, physical backbones, and transport architectures that transmit raw data packets globally. From initial 50 kbps ARPANET Interface Message Processors (IMPs) to the formalization of TCP/IP, hierarchical DNS, high-speed fiber backbones, BGP routing, and IPv6 address deployment, this timeline explores the engineering milestones that built modern global internetworking.
+            </p>
+        </header>
 
+        <section id="summary-section" class="summary-section">
             <h3>Quick Summary</h3>
+            <p>A chronological overview of pivotal networking milestones. Click any milestone to jump directly to its technical breakdown.</p>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Year</th>
                         <th>Milestone Event</th>
-                        <th>Impact</th>
+                        <th>Infrastructure / Protocol Impact</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1969</td>
                         <td><a href="#m1">ARPANET Established</a></td>
-                        <td>First functional packet-switching network</td>
+                        <td>First functional packet-switching network across 4 university nodes</td>
                     </tr>
                     <tr>
                         <td>1971</td>
-                        <td><a href="#m2">First Network Email Sent</a></td>
-                        <td>Introduced direct person-to-person messaging</td>
+                        <td><a href="#m2">Network Email &amp; Routing</a></td>
+                        <td>Introduced user@host addressing for asynchronous network communication</td>
+                    </tr>
+                    <tr>
+                        <td>1972</td>
+                        <td><a href="#m3">Telnet &amp; RFC Standards</a></td>
+                        <td>First remote terminal protocol and formalized RFC documentation</td>
+                    </tr>
+                    <tr>
+                        <td>1973</td>
+                        <td><a href="#m4">Ethernet Invented</a></td>
+                        <td>CSMA/CD protocol enables high-speed local area packet broadcast</td>
                     </tr>
                     <tr>
                         <td>1974</td>
-                        <td><a href="#m3">TCP/IP Concept Introduced</a></td>
-                        <td>Universal protocol for disparate computer networks</td>
+                        <td><a href="#m5">TCP Architecture Published</a></td>
+                        <td>Universal protocol for heterogeneous internetwork communication</td>
+                    </tr>
+                    <tr>
+                        <td>1978</td>
+                        <td><a href="#m6">IPv4 &amp; TCP/IP Separation</a></td>
+                        <td>Layered separation of routing (IP) from reliable transport (TCP)</td>
+                    </tr>
+                    <tr>
+                        <td>1981</td>
+                        <td><a href="#m7">Usenet &amp; UUCP Dial-Up</a></td>
+                        <td>Decentralized store-and-forward wide-area networking</td>
                     </tr>
                     <tr>
                         <td>1983</td>
-                        <td><a href="#m4">TCP/IP Adoption</a></td>
-                        <td>Official birth of the interconnected Internet</td>
+                        <td><a href="#m8">ARPANET Flag Day</a></td>
+                        <td>Mandatory cutover to TCP/IP officially establishes the Internet</td>
                     </tr>
                     <tr>
-                        <td>1989</td>
-                        <td><a href="#m5">World Wide Web Proposed</a></td>
-                        <td>Framework for URLs, HTTP, and HTML</td>
+                        <td>1983</td>
+                        <td><a href="#m9">Domain Name System (DNS)</a></td>
+                        <td>Hierarchical distributed name-to-IP resolution replacing HOSTS.TXT</td>
                     </tr>
                     <tr>
-                        <td>1991</td>
-                        <td><a href="#m6">WWW Public Release</a></td>
-                        <td>Web made freely available to the public</td>
+                        <td>1986</td>
+                        <td><a href="#m10">NSFNET Backbone Launched</a></td>
+                        <td>High-speed national academic network connects supercomputer hubs</td>
                     </tr>
                     <tr>
-                        <td>1993</td>
-                        <td><a href="#m7">NCSA Mosaic Released</a></td>
-                        <td>First web browser with inline images</td>
+                        <td>1988</td>
+                        <td><a href="#m11">BGP Routing &amp; Morris Worm</a></td>
+                        <td>Path-vector inter-domain routing and founding of CERT/CC security</td>
+                    </tr>
+                    <tr>
+                        <td>1992</td>
+                        <td><a href="#m12">Internet Society &amp; IETF</a></td>
+                        <td>Formalized open-consensus governance for Internet RFC standards</td>
+                    </tr>
+                    <tr>
+                        <td>1995</td>
+                        <td><a href="#m13">NSFNET Decommissioned</a></td>
+                        <td>Internet backbone transitions to commercial ISPs and exchange points (IXPs)</td>
                     </tr>
                     <tr>
                         <td>1998</td>
-                        <td><a href="#m8">Launch of Google</a></td>
-                        <td>PageRank algorithm improved search precision</td>
+                        <td><a href="#m14">ICANN &amp; IPv6 Specification</a></td>
+                        <td>128-bit address space (RFC 2460) and multi-stakeholder IP governance</td>
                     </tr>
                     <tr>
-                        <td>2004–2005</td>
-                        <td><a href="#m9">Rise of Web 2.0</a></td>
-                        <td>Shift toward user content and social platforms</td>
+                        <td>2003</td>
+                        <td><a href="#m15">Wi-Fi &amp; Broadband Expansion</a></td>
+                        <td>High-speed 802.11g wireless LANs and fiber/DSL broadband displace dial-up</td>
                     </tr>
                     <tr>
-                        <td>2007</td>
-                        <td><a href="#m10">Launch of the iPhone</a></td>
-                        <td>Began mainstream mobile web access</td>
-                    </tr>
-                    <tr>
-                        <td>2008</td>
-                        <td><a href="#m11">Cloud Infrastructure Grows</a></td>
-                        <td>Scalable hosting replaced physical servers</td>
-                    </tr>
-                    <tr>
-                        <td>2015</td>
-                        <td><a href="#m12">Let's Encrypt Launched</a></td>
-                        <td>Free automated SSL certificates for all sites</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td><a href="#m13">Generative AI Expansion</a></td>
-                        <td>Conversational interfaces integrated into the web</td>
+                        <td>2012</td>
+                        <td><a href="#m16">World IPv6 Launch &amp; DNSSEC</a></td>
+                        <td>Permanent dual-stack IPv6 deployment and cryptographic DNS root signing</td>
                     </tr>
                 </tbody>
             </table>
-
-            <hr>
-
-            <h3>Detailed Timeline</h3>
-            <ol>
-                <li id="m1">
-                    <h3>1969: ARPANET is Established</h3>
-                    <p><strong>Event:</strong> The Advanced Research Projects Agency (ARPA) connected four university computers across UCLA, Stanford, UC Santa Barbara, and the University of Utah, transmitting the first message ("LO") between UCLA and Stanford on October 29, 1969.</p>
-                    <p><small>Created the first successful packet-switching network and laid the foundational architecture for the modern Internet.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.computerhistory.org/timeline/1969/" target="_blank" rel="noopener">Computer History Museum</a></li>
-                        <li><a href="https://www.darpa.mil/about/innovation-timeline" target="_blank" rel="noopener">DARPA Innovation Timeline</a></li>
-                        <li><a href="https://www.internethalloffame.org/inductee/leonard-kleinrock/" target="_blank" rel="noopener">Internet Hall of Fame (Leonard Kleinrock)</a></li>
-                    </ul>
-                </li>
-
-                <li id="m2">
-                    <h3>1971: The First Network Email is Sent</h3>
-                    <p><strong>Event:</strong> Ray Tomlinson invented network email, introducing the '@' symbol to separate the user name from the machine name.</p>
-                    <p><small>Transformed network communication from basic file transfers to person-to-person messaging, becoming the first "killer app" of computer networks.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.internethalloffame.org/official-biography-raymond-tomlinson/" target="_blank" rel="noopener">Internet Hall of Fame (Raymond Tomlinson)</a></li>
-                        <li><a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noopener">Internet Society (Brief History of the Internet)</a></li>
-                    </ul>
-                </li>
-
-                <li id="m3">
-                    <h3>1974: Introduction of TCP/IP Concept</h3>
-                    <p><strong>Event:</strong> Vinton Cerf and Robert Kahn published "A Protocol for Packet Network Intercommunication," introducing Transmission Control Protocol (TCP).</p>
-                    <p><small>Provided a universal standardized protocol allowing heterogeneous computer networks to communicate seamlessly across disparate hardware and platforms.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://ieeexplore.ieee.org/document/1092713" target="_blank" rel="noopener">IEEE Xplore (Original Paper)</a></li>
-                        <li><a href="https://amturing.acm.org/award_winners/cerf_1083211.cfm" target="_blank" rel="noopener">ACM A.M. Turing Award Profile</a></li>
-                    </ul>
-                </li>
-
-                <li id="m4">
-                    <h3>1983: Official Adoption of TCP/IP (Birth of the Internet)</h3>
-                    <p><strong>Event:</strong> On January 1, 1983, ARPANET officially switched from NCP to TCP/IP.</p>
-                    <p><small>Unified multiple disparate networks into an interconnected global "internetwork".</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.rfc-editor.org/info/rfc801/" target="_blank" rel="noopener">IETF RFC 801</a></li>
-                        <li><a href="https://www.computerhistory.org/timeline/1983/" target="_blank" rel="noopener">Computer History Museum Timeline</a></li>
-                        <li><a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noopener">Internet Society (Transition to TCP/IP)</a></li>
-                    </ul>
-                </li>
-
-                <li id="m5">
-                    <h3>1989: Proposal of the World Wide Web</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee presented "Information Management: A Proposal" at CERN, outlining an information system using hypertext links.</p>
-                    <p><small>Conceived the framework for web pages, URLs, HTTP, and HTML, making internet information accessible through linked documents.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://home.cern/science/computing/the-birth-of-the-web/" target="_blank" rel="noopener">CERN Official History</a></li>
-                        <li><a href="https://www.w3.org/History/1989/proposal.html" target="_blank" rel="noopener">W3C Original Proposal</a></li>
-                    </ul>
-                </li>
-
-                <li id="m6">
-                    <h3>1991: The World Wide Web Goes Public</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee released the World Wide Web software to the public internet community via the alt.hypertext newsgroup on August 6, 1991.</p>
-                    <p><small>Transitioned the Internet from an academic/research utility into an open, globally accessible platform for public information sharing.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://first-website.web.cern.ch/" target="_blank" rel="noopener">CERN Web Preservation Project</a></li>
-                        <li><a href="https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt" target="_blank" rel="noopener">W3C Historic Usenet Announcement</a></li>
-                    </ul>
-                </li>
-
-                <li id="m7">
-                    <h3>1993: NCSA Mosaic Browser Released</h3>
-                    <p><strong>Event:</strong> Marc Andreessen and Eric Bina at NCSA released Mosaic, the first web browser capable of displaying inline images alongside text.</p>
-                    <p><small>Popularized the Web by making non-technical navigation intuitive, sparking consumer internet adoption.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.ncsa.illinois.edu/research/project-highlights/ncsa-mosaic/" target="_blank" rel="noopener">NCSA Project Highlights</a></li>
-                        <li><a href="https://www.computerhistory.org/revolution/web-graphic-user-interface/19/371" target="_blank" rel="noopener">Computer History Museum</a></li>
-                    </ul>
-                </li>
-
-                <li id="m8">
-                    <h3>1998: Launch of Google</h3>
-                    <p><strong>Event:</strong> Larry Page and Sergey Brin incorporated Google, introducing the PageRank algorithm for web searching.</p>
-                    <p><small>Revolutionized search technology by ranking pages based on relevance and hyperlink structure.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://about.google/company-info/our-story/" target="_blank" rel="noopener">Google Company History</a></li>
-                        <li><a href="https://stanfordmag.org/story/the-origin-of-google" target="_blank" rel="noopener">Stanford Magazine (The Origin of Google)</a></li>
-                        <li><a href="https://www.computerhistory.org/timeline/1998/" target="_blank" rel="noopener">Computer History Museum Timeline</a></li>
-                    </ul>
-                </li>
-
-                <li id="m9">
-                    <h3>2004–2005: Rise of Social Media and User-Generated Content (Web 2.0)</h3>
-                    <p><strong>Event:</strong> Launch of Facebook (2004) and YouTube (2005), marking the transition into participatory Web 2.0 platforms.</p>
-                    <p><small>Shifted internet interaction from static web browsing to dynamic user-created content, video sharing, and global social networking.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.thecrimson.com/article/2004/2/9/hundreds-register-for-new-facebook-website/" target="_blank" rel="noopener">The Harvard Crimson (2004 Report)</a></li>
-                        <li><a href="https://www.pewresearch.org/internet/fact-sheet/social-media/" target="_blank" rel="noopener">Pew Research Center</a></li>
-                    </ul>
-                </li>
-
-                <li id="m10">
-                    <h3>2007: Launch of the iPhone and Mobile Internet Era</h3>
-                    <p><strong>Event:</strong> Apple released the first iPhone, pairing a desktop-class web browser (Safari) with a multi-touch interface and cellular internet access.</p>
-                    <p><small>Shifted global internet usage from desktop PCs to always-connected mobile devices.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank" rel="noopener">Apple Newsroom Archives</a></li>
-                        <li><a href="https://www.computerhistory.org/revolution/mobile-computing/18" target="_blank" rel="noopener">Computer History Museum</a></li>
-                    </ul>
-                </li>
-
-                <li id="m11">
-                    <h3>2008: Emergence of Modern Cloud Infrastructure</h3>
-                    <p><strong>Event:</strong> Commercial cloud services expanded with Google App Engine (2008) and Amazon EC2, alongside containerization technologies like Docker (2013).</p>
-                    <p><small>Replaced physical server rooms with scalable, on-demand cloud infrastructure to serve global traffic.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://aws.amazon.com/about-aws/" target="_blank" rel="noopener">Amazon Web Services History</a></li>
-                        <li><a href="https://www.computer.org/csdl/magazine/cc" target="_blank" rel="noopener">IEEE Cloud Computing</a></li>
-                    </ul>
-                </li>
-
-                <li id="m12">
-                    <h3>2015: Universal Web Encryption (Let's Encrypt)</h3>
-                    <p><strong>Event:</strong> The Internet Security Research Group launched Let's Encrypt, offering free, automated SSL/TLS certificates.</p>
-                    <p><small>Transformed web traffic from unencrypted HTTP to near-universal HTTPS encryption, securing user privacy online.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://letsencrypt.org/about/" target="_blank" rel="noopener">Let's Encrypt / ISRG</a></li>
-                        <li><a href="https://www.eff.org/encrypt-the-web" target="_blank" rel="noopener">Electronic Frontier Foundation (EFF)</a></li>
-                    </ul>
-                </li>
-
-                <li id="m13">
-                    <h3>2022: Generative AI &amp; the Next-Generation Web Interface</h3>
-                    <p><strong>Event:</strong> OpenAI released ChatGPT in November 2022, accelerating the integration of Large Language Models into web services and search engines.</p>
-                    <p><small>Shifted web interaction from manual link search to conversational knowledge generation and AI automation.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener">OpenAI Announcement</a></li>
-                        <li><a href="https://hai.stanford.edu/research/ai-index-report" target="_blank" rel="noopener">Stanford HAI Report</a></li>
-                    </ul>
-                </li>
-            </ol>
         </section>
+
+        <hr>
+
+        <!-- Detailed Milestones Section: Each Milestone is an Individual Semantic <article> -->
+        <section id="detailed-milestones">
+            <h2>Detailed Milestones</h2>
+
+            <article id="m1">
+                <h3>1. 1969: ARPANET Established (First Packet-Switching Transmission)</h3>
+                <p><strong>Event:</strong> The Advanced Research Projects Agency (ARPA) deployed Interface Message Processors (IMPs) connecting university computers across UCLA, Stanford Research Institute, UC Santa Barbara, and the University of Utah. The first packet-switched message ("LO") was transmitted between UCLA and Stanford on October 29, 1969.</p>
+                <p><small>Proved the viability of packet switching over traditional circuit-switched telephone lines, establishing dynamic routing and decentralized survivability as core principles of computer networking.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.darpa.mil/about/innovation-timeline" target="_blank" rel="noopener">DARPA Innovation Timeline: ARPANET</a></li>
+                    <li><a href="https://www.computerhistory.org/timeline/1969/" target="_blank" rel="noopener">Computer History Museum: 1969 ARPANET</a></li>
+                    <li><a href="https://www.internethalloffame.org/inductee/leonard-kleinrock/" target="_blank" rel="noopener">Internet Hall of Fame: Leonard Kleinrock</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m2">
+                <h3>2. 1971: The First Network Email &amp; Header Routing Standards</h3>
+                <p><strong>Event:</strong> Computer engineer Ray Tomlinson at Bolt, Beranek and Newman (BBN) developed the SNDMSG and CPYNET programs, creating network email and selecting the '@' symbol to separate local user accounts from remote host names.</p>
+                <p><small>Shifted network utility from purely synchronous remote computation and file transfers to asynchronous person-to-person messaging, creating the earliest standard for network addressing.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.internethalloffame.org/official-biography-raymond-tomlinson/" target="_blank" rel="noopener">Internet Hall of Fame: Raymond Tomlinson</a></li>
+                    <li><a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noopener">Internet Society: A Brief History of the Internet</a></li>
+                    <li><a href="https://www.rfc-editor.org/info/rfc561" target="_blank" rel="noopener">IETF RFC 561: Standardizing Network Mail Headers</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m3">
+                <h3>3. 1972: Telnet Protocol Specification &amp; RFC Standardization</h3>
+                <p><strong>Event:</strong> The network working group published RFC 318 specifying the Telnet protocol for remote terminal connections. Jon Postel organized Request for Comments (RFC) management, and ARPANET was publicly demonstrated to international researchers at the ICCC in Washington, D.C.</p>
+                <p><small>Established standardized virtual terminal communication across heterogeneous computer architectures and formalized the RFC mechanism as the foundational open-documentation model for network protocols.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc318" target="_blank" rel="noopener">IETF RFC 318: Telnet Protocol Specification</a></li>
+                    <li><a href="https://www.internethalloffame.org/inductee/jon-postel/" target="_blank" rel="noopener">Internet Hall of Fame: Jon Postel</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m4">
+                <h3>4. 1973: Invention of Ethernet Local Area Networking (LAN)</h3>
+                <p><strong>Event:</strong> Robert Metcalfe and David Boggs at Xerox PARC invented Ethernet, utilizing Carrier Sense Multiple Access with Collision Detection (CSMA/CD) to link computers over coaxial cable.</p>
+                <p><small>Created the universal physical and data-link layer standard (IEEE 802.3) for high-speed local packet broadcast, bridging personal workstations directly into wide-area network gateways.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.ieee.org/about/awards/bios/metcalfe-bio.html" target="_blank" rel="noopener">IEEE Honors: Robert Metcalfe Biography</a></li>
+                    <li><a href="https://www.computerhistory.org/revolution/networking/19/374" target="_blank" rel="noopener">Computer History Museum: Ethernet Invention</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m5">
+                <h3>5. 1974: Transmission Control Protocol (TCP) Design</h3>
+                <p><strong>Event:</strong> Vinton Cerf and Robert Kahn published "A Protocol for Packet Network Intercommunication" in IEEE Transactions on Communications, formally specifying TCP (RFC 675).</p>
+                <p><small>Engineered the foundational architecture for internetworking, allowing disparate packet networks (satellite, radio, landline) to seamlessly exchange packets using end-to-end reliability and gateways.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://ieeexplore.ieee.org/document/1092713" target="_blank" rel="noopener">IEEE Transactions: Cerf &amp; Kahn Protocol Paper</a></li>
+                    <li><a href="https://amturing.acm.org/award_winners/cerf_1083211.cfm" target="_blank" rel="noopener">ACM A.M. Turing Award Citation</a></li>
+                    <li><a href="https://www.rfc-editor.org/info/rfc675" target="_blank" rel="noopener">IETF RFC 675: Specification of Internet Transmission Control Program</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m6">
+                <h3>6. 1978: Separation of TCP and IP &amp; Creation of IPv4</h3>
+                <p><strong>Event:</strong> Vint Cerf, Jon Postel, and Danny Cohen split the original monolithic TCP program into two distinct layers: TCP for reliable connection-oriented transport, and IP for stateless packet addressing and routing, defining IPv4.</p>
+                <p><small>Established the modular layered architecture of the modern Internet protocol stack and defined the 32-bit dotted-decimal IP address space (providing ~4.3 billion addresses).</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc791" target="_blank" rel="noopener">IETF RFC 791: Internet Protocol (IPv4) Specification</a></li>
+                    <li><a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/" target="_blank" rel="noopener">Internet Society: Protocol Layering History</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m7">
+                <h3>7. 1981: Usenet &amp; UUCP Decentralized Dial-Up Networking</h3>
+                <p><strong>Event:</strong> Duke University graduate students Jim Ellis and Tom Truscott deployed Usenet using the Unix-to-Unix Copy Protocol (UUCP) over dial-up telephone modems.</p>
+                <p><small>Demonstrated decentralized, peer-to-peer store-and-forward message routing across wide geographic areas, proving that digital networks could operate without military or government funding.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.usenix.org/legacy/publications/library/proceedings/als00/full_papers/salus/salus.html" target="_blank" rel="noopener">USENIX: The History of Unix Networks and Usenet</a></li>
+                    <li><a href="https://www.computerhistory.org/timeline/1981/" target="_blank" rel="noopener">Computer History Museum: 1981 Timeline</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m8">
+                <h3>8. 1983: ARPANET Flag Day (Official Birth of the Internet)</h3>
+                <p><strong>Event:</strong> On January 1, 1983 ("Flag Day"), ARPANET permanently deactivated the legacy Network Control Program (NCP) and mandated that all connected host computers communicate exclusively via TCP/IP (RFC 801).</p>
+                <p><small>Marked the formal operational birth of the Internet by unifying military, university, and international networks into a single, cohesive, globally routable internetwork.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc801" target="_blank" rel="noopener">IETF RFC 801: NCP/TCP Transition Plan</a></li>
+                    <li><a href="https://www.computerhistory.org/timeline/1983/" target="_blank" rel="noopener">Computer History Museum: TCP/IP Becomes Official</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m9">
+                <h3>9. 1983: The Domain Name System (DNS) Invented</h3>
+                <p><strong>Event:</strong> Paul Mockapetris at USC Information Sciences Institute designed the Domain Name System (RFC 882 and RFC 883), establishing hierarchical name resolution with top-level domains (.com, .edu, .gov, .org, .net).</p>
+                <p><small>Eliminated the fragile central distribution of the static <code>HOSTS.TXT</code> master file, replacing it with a distributed, delegable, and cacheable database capable of scaling to hundreds of millions of nodes.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc882" target="_blank" rel="noopener">IETF RFC 882: Domain Names - Concepts and Facilities</a></li>
+                    <li><a href="https://www.internethalloffame.org/inductee/paul-mockapetris/" target="_blank" rel="noopener">Internet Hall of Fame: Paul Mockapetris</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m10">
+                <h3>10. 1986: NSFNET National Backbone Launched</h3>
+                <p><strong>Event:</strong> The U.S. National Science Foundation established NSFNET, deploying a 56 kbps backbone linking supercomputer centers at Princeton, Cornell, UCSD, UIUC, and NCAR, later upgraded to T1 (1.5 Mbps) and T3 (45 Mbps).</p>
+                <p><small>Expanded Internet access beyond defense contractors into the national academic community, providing the core long-distance fiber transmission infrastructure that carried academic and scientific network traffic.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.nsf.gov/news/special_reports/history-nsf/index.jsp" target="_blank" rel="noopener">National Science Foundation: NSFNET History</a></li>
+                    <li><a href="https://www.merit.edu/about/history/" target="_blank" rel="noopener">Merit Network Heritage: Managing NSFNET</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m11">
+                <h3>11. 1988: Border Gateway Protocol (BGP) &amp; The Morris Worm</h3>
+                <p><strong>Event:</strong> Kirk Lougheed and Yakov Rekhter drafted Border Gateway Protocol (RFC 1105) to route traffic between autonomous systems. Concurrently, the Morris Worm infected 10% of internet-connected hosts, leading to the formation of the CERT Coordination Center.</p>
+                <p><small>Supplied the scalable path-vector inter-domain routing protocol that binds modern global telecommunication carriers together, and established cybersecurity incident response as an institutional necessity.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc1105" target="_blank" rel="noopener">IETF RFC 1105: Border Gateway Protocol (BGP)</a></li>
+                    <li><a href="https://www.sei.cmu.edu/about/divisions/cert/" target="_blank" rel="noopener">Carnegie Mellon University: CERT Coordination Center History</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m12">
+                <h3>12. 1992: Internet Society (ISOC) Founded &amp; IETF Formalization</h3>
+                <p><strong>Event:</strong> Vint Cerf, Bob Kahn, and Lyman Chapin established the Internet Society (ISOC) to incorporate institutional governance, administrative support, and financial backing for the Internet Engineering Task Force (IETF).</p>
+                <p><small>Safeguarded the open, voluntary, consensus-driven standards process ("rough consensus and running code"), ensuring that core Internet protocols remained unencumbered by proprietary corporate patents.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.internetsociety.org/about-internet-society/" target="_blank" rel="noopener">Internet Society: Institutional Mission &amp; History</a></li>
+                    <li><a href="https://www.ietf.org/about/history/" target="_blank" rel="noopener">IETF: History and Operating Philosophy</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m13">
+                <h3>13. 1995: NSFNET Decommissioned &amp; Commercial ISP Backbone Transition</h3>
+                <p><strong>Event:</strong> On April 30, 1995, the National Science Foundation decommissioned the NSFNET backbone, transferring national Internet traffic to private commercial Internet Service Providers (ISPs) interconnected through Network Access Points (NAPs) and Internet Exchange Points (IXPs).</p>
+                <p><small>Finalized the transformation of the Internet from a federally subsidized research network into a privatized, competitive, commercial telecommunications infrastructure capable of global market scaling.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.nsf.gov/about/history/overview-50.jsp" target="_blank" rel="noopener">National Science Foundation: Transition to Commercial Internet</a></li>
+                    <li><a href="https://www.computerhistory.org/timeline/1995/" target="_blank" rel="noopener">Computer History Museum: 1995 Infrastructure Transition</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m14">
+                <h3>14. 1998: ICANN Established &amp; IPv6 Specification (RFC 2460)</h3>
+                <p><strong>Event:</strong> The Internet Corporation for Assigned Names and Numbers (ICANN) was created under a U.S. Department of Commerce mandate to coordinate global IP address allocations and DNS root zones. Concurrently, the IETF published RFC 2460 formalizing IPv6.</p>
+                <p><small>Established multi-stakeholder governance over global critical Internet identifiers and engineered the 128-bit address space, permanently averting IPv4 address space exhaustion.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.icann.org/resources/pages/welcome-2012-02-25-en" target="_blank" rel="noopener">ICANN: History and Multi-Stakeholder Model</a></li>
+                    <li><a href="https://www.rfc-editor.org/info/rfc2460" target="_blank" rel="noopener">IETF RFC 2460: Internet Protocol, Version 6 (IPv6) Specification</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m15">
+                <h3>15. 2003: IEEE 802.11g Wi-Fi &amp; Residential Broadband Expansion</h3>
+                <p><strong>Event:</strong> The IEEE ratified the 802.11g wireless networking standard (providing 54 Mbps throughput in the 2.4 GHz band), while DSL, cable modems, and fiber-to-the-home infrastructures eclipsed analog dial-up modems.</p>
+                <p><small>Untethered consumer and corporate devices from physical ethernet cables, democratizing high-speed wireless packet routing and laying the infrastructure for always-connected computing.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://standards.ieee.org/standard/802_11g-2003.html" target="_blank" rel="noopener">IEEE Standards Association: 802.11g Standard</a></li>
+                    <li><a href="https://www.internetsociety.org/resources/doc/2015/global-internet-report-2015/" target="_blank" rel="noopener">Internet Society: Global Infrastructure Report</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m16">
+                <h3>16. 2012: World IPv6 Launch &amp; Global DNSSEC Cryptographic Deployment</h3>
+                <p><strong>Event:</strong> On June 6, 2012, major international network operators, content delivery networks (CDNs), and hardware vendors permanently enabled IPv6. Simultaneously, DNS Security Extensions (DNSSEC) completed full cryptographic signing across all 13 root DNS name servers.</p>
+                <p><small>Marked the permanent operational production deployment of next-generation internetworking and established cryptographic origin authentication for domain lookup, protecting global routing against packet poisoning and MITM attacks.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.worldipv6launch.org/" target="_blank" rel="noopener">Internet Society: World IPv6 Launch Archive</a></li>
+                    <li><a href="https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en" target="_blank" rel="noopener">ICANN: DNSSEC Root Zone Security Deployment</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+        </section>
+    </section>
 </article>
 {% endblock %}

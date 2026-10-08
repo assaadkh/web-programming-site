@@ -2,10 +2,20 @@
 {% block title %}History of the Web — Assaad Khalife{% endblock %}
 {% block content %}
 <article>
-        <section>
-            <h2>Key Milestones of the Web</h2>
+    <section>
+        <header class="timeline-intro-banner">
+            <h2>History of the World Wide Web</h2>
+            <p class="lead-text">
+                The World Wide Web (WWW) is an open information space where documents and web resources are identified by Uniform Resource Locators (URLs), interconnected through hypertext links, and transmitted across the Internet using the Hypertext Transfer Protocol (HTTP). Conceived in 1989 by Sir Tim Berners-Lee at CERN (the European Organization for Nuclear Research), the Web was engineered to enable automated information sharing between scientists and academic institutions across heterogeneous computer systems worldwide.
+            </p>
+            <p>
+                While the Internet serves as the global networking infrastructure connecting computers via TCP/IP packet switching, the Web exists as an application layer riding atop that network. From initial read-only hypertext pages in 1991 to client-side scripting, W3C open standards, mobile responsive design, and modern WebAssembly and generative agent architectures, the Web has transformed into humanity's primary platform for information dissemination, software delivery, and global collaboration.
+            </p>
+        </header>
 
+        <section id="summary-section" class="summary-section">
             <h3>Quick Summary</h3>
+            <p>A chronological overview of pivotal web milestones. Click any milestone to jump directly to its technical breakdown.</p>
             <table border="1">
                 <thead>
                     <tr>
@@ -42,230 +52,262 @@
                     </tr>
                     <tr>
                         <td>1995</td>
-                        <td><a href="#m6">JavaScript, PHP &amp; E-Commerce</a></td>
-                        <td>Added client-side scripting and online shopping</td>
+                        <td><a href="#m6">JavaScript &amp; Scripting</a></td>
+                        <td>Client-side interactivity and web applications</td>
+                    </tr>
+                    <tr>
+                        <td>1996</td>
+                        <td><a href="#m7">CSS Level 1 Released</a></td>
+                        <td>Separated document structure from presentation</td>
                     </tr>
                     <tr>
                         <td>1998</td>
-                        <td><a href="#m7">Google Incorporated</a></td>
-                        <td>PageRank algorithm improved web navigation</td>
+                        <td><a href="#m8">DOM Level 1 &amp; Web Search</a></td>
+                        <td>Dynamic document manipulation and PageRank indexing</td>
+                    </tr>
+                    <tr>
+                        <td>1999</td>
+                        <td><a href="#m9">XMLHttpRequest &amp; AJAX</a></td>
+                        <td>Asynchronous background data retrieval</td>
                     </tr>
                     <tr>
                         <td>2004</td>
-                        <td><a href="#m8">Web 2.0 &amp; Social Media</a></td>
-                        <td>Shifted focus to user-generated platforms</td>
+                        <td><a href="#m10">Web 2.0 &amp; Social Platforms</a></td>
+                        <td>User-generated content and dynamic hypermedia</td>
                     </tr>
                     <tr>
                         <td>2007</td>
-                        <td><a href="#m9">iPhone &amp; Mobile Web</a></td>
-                        <td>Began mainstream mobile web browsing</td>
+                        <td><a href="#m11">Mobile Web &amp; Responsive Era</a></td>
+                        <td>Smartphone browsing and media query layouts</td>
                     </tr>
                     <tr>
                         <td>2014</td>
-                        <td><a href="#m10">HTML5 Recommendation</a></td>
-                        <td>Native audio/video support replacing plugins</td>
+                        <td><a href="#m12">HTML5 Recommendation</a></td>
+                        <td>Native audio/video/canvas without proprietary plugins</td>
                     </tr>
                     <tr>
                         <td>2015</td>
-                        <td><a href="#m11">HTTP/2, Let's Encrypt &amp; ES6</a></td>
-                        <td>Faster speeds, universal SSL, and modern JS</td>
+                        <td><a href="#m13">HTTP/2, Let's Encrypt &amp; ES6</a></td>
+                        <td>Multiplexed transport, universal TLS, and modern JS</td>
                     </tr>
                     <tr>
                         <td>2017–2019</td>
-                        <td><a href="#m12">WebAssembly (Wasm) Standard</a></td>
-                        <td>Near-native performance for web apps</td>
+                        <td><a href="#m14">WebAssembly (Wasm) Standard</a></td>
+                        <td>Near-native binary execution inside the browser</td>
                     </tr>
                     <tr>
                         <td>2018</td>
-                        <td><a href="#m13">GDPR Enforcement</a></td>
-                        <td>Global overhaul of web privacy and tracking</td>
-                    </tr>
-                    <tr>
-                        <td>2020</td>
-                        <td><a href="#m14">End of Flash Player</a></td>
-                        <td>Complete transition to open HTML5 standards</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td><a href="#m15">HTTP/3 Standardized</a></td>
-                        <td>QUIC protocol improved mobile connection speed</td>
+                        <td><a href="#m15">GDPR &amp; Web Privacy</a></td>
+                        <td>Global overhaul of web privacy, cookies, and data rights</td>
                     </tr>
                     <tr>
                         <td>2022–Present</td>
-                        <td><a href="#m16">Generative AI Era</a></td>
-                        <td>Conversational search and AI automation</td>
+                        <td><a href="#m16">Generative &amp; Agentic Web</a></td>
+                        <td>Conversational interfaces and LLM-assisted hypertext</td>
                     </tr>
                 </tbody>
             </table>
-
-            <hr>
-
-            <h3>Detailed Timeline</h3>
-            <ol>
-                <li id="m1">
-                    <h3>1989: Proposal for the World Wide Web</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee submitted his proposal "Information Management: A Proposal" at CERN.</p>
-                    <p><small>It laid the foundation for the World Wide Web, introducing the concept of a global hypertext system to link and access information across different computers.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.w3.org/History/1989/proposal.html" target="_blank" rel="noopener">W3C Proposal Archive</a></li>
-                    </ul>
-                </li>
-
-                <li id="m2">
-                    <h3>1990: First Web Server, Browser, and Webpage</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee created the first web browser (WorldWideWeb), web server (nxoc01.cern.ch / info.cern.ch), and webpage at CERN.</p>
-                    <p><small>Demonstrated the practical functionality of HTTP, HTML, and URLs, turning theoretical concepts into working tech.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://home.cern/science/computing/the-birth-of-the-web/" target="_blank" rel="noopener">CERN Birth of the Web</a></li>
-                    </ul>
-                </li>
-
-                <li id="m3">
-                    <h3>1991: The Web Goes Public</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee announced the World Wide Web software publicly on the alt.hypertext newsgroup.</p>
-                    <p><small>Opened the Web to the global public outside CERN, initiating widespread adoption and development.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt" target="_blank" rel="noopener">W3C Announcement Archive</a></li>
-                    </ul>
-                </li>
-
-                <li id="m4">
-                    <h3>1993: CERN Releases WWW into the Public Domain &amp; NCSA Mosaic Launches</h3>
-                    <p><strong>Event:</strong> CERN placed the Web source code in the public domain without royalties, and NCSA released Mosaic, the first widely popular graphical web browser.</p>
-                    <p><small>Removing financial and legal barriers enabled exponential growth, while Mosaic made navigating the Web user-friendly for non-technical users.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://home.cern/science/computing/the-birth-of-the-web/licensing-web/" target="_blank" rel="noopener">CERN Royalty-Free Declaration</a></li>
-                        <li><a href="https://www.ncsa.illinois.edu/research/project-highlights/ncsa-mosaic/" target="_blank" rel="noopener">NCSA Mosaic History</a></li>
-                    </ul>
-                </li>
-
-                <li id="m5">
-                    <h3>1994: Founding of the W3C (World Wide Web Consortium)</h3>
-                    <p><strong>Event:</strong> Tim Berners-Lee founded the World Wide Web Consortium (W3C) at MIT.</p>
-                    <p><small>Established an international standard-setting body to ensure the open Web remained interoperable and standardized (HTML, CSS, etc.).</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.w3.org/about/history/" target="_blank" rel="noopener">W3C History</a></li>
-                    </ul>
-                </li>
-
-                <li id="m6">
-                    <h3>1995: Launch of JavaScript, PHP, and Commercial E-Commerce</h3>
-                    <p><strong>Event:</strong> Brendan Eich created JavaScript at Netscape, while Amazon and eBay (AuctionWeb) were founded.</p>
-                    <p><small>JavaScript brought interactive client-side scripting to web pages, turning static documents into rich applications, while e-commerce transformed global retail.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">MDN JavaScript Guide</a></li>
-                        <li><a href="https://www.aboutamazon.com/about-us" target="_blank" rel="noopener">Amazon Overview</a></li>
-                        <li><a href="https://www.ebayinc.com/company/our-history/" target="_blank" rel="noopener">eBay Company History</a></li>
-                    </ul>
-                </li>
-
-                <li id="m7">
-                    <h3>1998: Incorporation of Google</h3>
-                    <p><strong>Event:</strong> Larry Page and Sergey Brin incorporated Google, introducing the PageRank search algorithm.</p>
-                    <p><small>Revolutionized search engine accuracy and speed, making the exponentially growing web easily searchable and navigable.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://about.google/company-info/our-story/" target="_blank" rel="noopener">Google Official History</a></li>
-                    </ul>
-                </li>
-
-                <li id="m8">
-                    <h3>2004: Emergence of "Web 2.0" and Social Networking</h3>
-                    <p><strong>Event:</strong> Mark Zuckerberg launched Facebook, and O'Reilly Media popularized the term "Web 2.0".</p>
-                    <p><small>Marked the shift from read-only static websites to user-generated content, rich internet applications, and global social platforms.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html" target="_blank" rel="noopener">O'Reilly Web 2.0 Article</a></li>
-                    </ul>
-                </li>
-
-                <li id="m9">
-                    <h3>2007: Launch of the iPhone and Mobile Web Explosion</h3>
-                    <p><strong>Event:</strong> Apple introduced the original iPhone with a desktop-class Safari web browser.</p>
-                    <p><small>Transformed the Web from a desktop-centric experience into an always-on mobile experience, driving responsive web design.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank" rel="noopener">Apple Newsroom Archives</a></li>
-                    </ul>
-                </li>
-
-                <li id="m10">
-                    <h3>2014: HTML5 Reaches Official Recommendation</h3>
-                    <p><strong>Event:</strong> W3C officially published the HTML5 Recommendation.</p>
-                    <p><small>Standardized native web support for video, audio, canvas drawing, and mobile integration without requiring proprietary plugins like Flash.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/" target="_blank" rel="noopener">W3C HTML5 Recommendation</a></li>
-                    </ul>
-                </li>
-
-                <li id="m11">
-                    <h3>2015: HTTP/2, Let's Encrypt, and ECMAScript 2015 (ES6)</h3>
-                    <p><strong>Event:</strong> IETF published HTTP/2 (RFC 7540), Let's Encrypt launched free automated SSL/TLS certificates, and Ecma released ES6.</p>
-                    <p><small>Overhauled web transmission speed, spurred the HTTPS encryption standard across the web, and modernized JavaScript for application development.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.rfc-editor.org/info/rfc7540/" target="_blank" rel="noopener">IETF HTTP/2 RFC 7540</a></li>
-                        <li><a href="https://letsencrypt.org/about/" target="_blank" rel="noopener">Let's Encrypt About Page</a></li>
-                    </ul>
-                </li>
-
-                <li id="m12">
-                    <h3>2017–2019: WebAssembly (Wasm) Becomes 4th Web Standard</h3>
-                    <p><strong>Event:</strong> Major browser engines shipped WebAssembly MVP in 2017, and W3C ratified it as an official recommendation in 2019.</p>
-                    <p><small>Allowed languages like C, C++, Rust, and Go to run in browsers at near-native binary speed, enabling desktop software directly in web browsers.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.w3.org/press-releases/2019/wasm/" target="_blank" rel="noopener">W3C WebAssembly Press Release</a></li>
-                    </ul>
-                </li>
-
-                <li id="m13">
-                    <h3>2018: GDPR &amp; Global Web Privacy Paradigm Shift</h3>
-                    <p><strong>Event:</strong> The European Union's General Data Protection Regulation (GDPR) went into effect.</p>
-                    <p><small>Reshaped web data tracking, analytics, and user privacy rights globally, accelerating the decline of third-party tracking cookies.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_en" target="_blank" rel="noopener">European Commission Data Protection</a></li>
-                    </ul>
-                </li>
-
-                <li id="m14">
-                    <h3>2020: The Official End of Adobe Flash Player</h3>
-                    <p><strong>Event:</strong> Adobe permanently terminated support for Flash Player and blocked Flash content execution.</p>
-                    <p><small>Marked the definitive end of proprietary browser plugins, solidifying open standards like HTML5, CSS, and JavaScript.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.adobe.com/products/flashplayer/end-of-life.html" target="_blank" rel="noopener">Adobe Flash End of Life</a></li>
-                    </ul>
-                </li>
-
-                <li id="m15">
-                    <h3>2022: HTTP/3 Standardized over QUIC (RFC 9114)</h3>
-                    <p><strong>Event:</strong> IETF standardized HTTP/3 running over the UDP-based QUIC transport protocol.</p>
-                    <p><small>Solved TCP head-of-line blocking, enabled 0-RTT handshakes, and improved connection reliability across cellular and Wi-Fi networks.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://www.rfc-editor.org/info/rfc9114/" target="_blank" rel="noopener">IETF HTTP/3 RFC 9114</a></li>
-                    </ul>
-                </li>
-
-                <li id="m16">
-                    <h3>2022–Present: Generative AI &amp; The Conversational Web</h3>
-                    <p><strong>Event:</strong> OpenAI released ChatGPT in November 2022, driving integration of LLMs and AI web agents across the Internet.</p>
-                    <p><small>Initiated the shift from traditional search link crawling toward conversational synthesis, natural language interfaces, and web automation.</small></p>
-                    <p><strong>Sources:</strong></p>
-                    <ul>
-                        <li><a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener">OpenAI Announcement</a></li>
-                    </ul>
-                </li>
-            </ol>
         </section>
+
+        <hr>
+
+        <!-- Detailed Milestones Section: Each Milestone is an Individual Semantic <article> -->
+        <section id="detailed-milestones">
+            <h2>Detailed Milestones</h2>
+
+            <article id="m1">
+                <h3>1. 1989: Proposal for the World Wide Web</h3>
+                <p><strong>Event:</strong> Tim Berners-Lee submitted his proposal "Information Management: A Proposal" at CERN.</p>
+                <p><small>It laid the foundation for the World Wide Web, introducing the concept of a global hypertext system to link and access information across different computers without requiring a central database.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/History/1989/proposal.html" target="_blank" rel="noopener">W3C Proposal Archive</a></li>
+                    <li><a href="https://home.cern/science/computing/birth-web" target="_blank" rel="noopener">CERN: The Birth of the Web</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m2">
+                <h3>2. 1990: First Web Server, Browser, and Webpage</h3>
+                <p><strong>Event:</strong> Tim Berners-Lee developed the first web client (WorldWideWeb), the first HTTP daemon (CERN httpd), and published the first webpage at CERN on his NeXT computer.</p>
+                <p><small>Demonstrated the practical functionality of HTTP, HTML, and URLs, turning theoretical hypertext concepts into a functioning, deployed technology stack.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://home.cern/science/computing/birth-web/licensing-web" target="_blank" rel="noopener">CERN: WorldWideWeb History</a></li>
+                    <li><a href="https://www.w3.org/People/Berners-Lee/WorldWideWeb.html" target="_blank" rel="noopener">W3C WorldWideWeb Summary</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m3">
+                <h3>3. 1991: The Web Goes Public</h3>
+                <p><strong>Event:</strong> Tim Berners-Lee announced the World Wide Web project publicly on the alt.hypertext Usenet newsgroup on August 6, 1991, inviting global collaboration.</p>
+                <p><small>Opened the Web to the global public outside CERN, initiating widespread adoption, decentralized server deployments, and international community development.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt" target="_blank" rel="noopener">W3C Usenet Announcement Archive</a></li>
+                    <li><a href="https://home.cern/science/computing/birth-web" target="_blank" rel="noopener">CERN Public Release Chronicle</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m4">
+                <h3>4. 1993: CERN Places Web in the Public Domain &amp; NCSA Mosaic Launches</h3>
+                <p><strong>Event:</strong> On April 30, 1993, CERN permanently placed the Web software in the public domain on a royalty-free basis. Concurrently, NCSA released Mosaic, introducing graphical inline images.</p>
+                <p><small>Removing legal and licensing fees cleared the path for global corporate and consumer adoption, while Mosaic transformed the Web into an intuitive, visually engaging medium.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://home.cern/science/computing/birth-web/licensing-web" target="_blank" rel="noopener">CERN Royalty-Free Document Archive</a></li>
+                    <li><a href="https://www.computerhistory.org/revolution/the-web/20/371" target="_blank" rel="noopener">Computer History Museum (NCSA Mosaic)</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m5">
+                <h3>5. 1994: Founding of the World Wide Web Consortium (W3C)</h3>
+                <p><strong>Event:</strong> Tim Berners-Lee founded the World Wide Web Consortium (W3C) at MIT in collaboration with CERN, with support from DARPA and the European Commission.</p>
+                <p><small>Established an international vendor-neutral standards organization committed to keeping the Web unified, open, and accessible through formal recommendations (HTML, CSS, XML).</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/Consortium/facts" target="_blank" rel="noopener">W3C Organization History</a></li>
+                    <li><a href="https://www.w3.org/about/history/" target="_blank" rel="noopener">W3C About &amp; Milestones</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m6">
+                <h3>6. 1995: Launch of JavaScript &amp; Client-Side Web Scripting</h3>
+                <p><strong>Event:</strong> Brendan Eich at Netscape Communications engineered JavaScript in 10 days, introducing client-side programmatic execution directly inside the browser environment.</p>
+                <p><small>Shifted the Web from static hypertext viewing to dynamic, interactive applications with form validation, asynchronous state manipulation, and event handling.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript" target="_blank" rel="noopener">MDN Web Docs: JavaScript History</a></li>
+                    <li><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener">ECMA International (ECMA-262 Standards)</a></li>
+                    <li><a href="https://www.w3.org/standards/webdesign/script" target="_blank" rel="noopener">W3C Scripting Standards Architecture</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m7">
+                <h3>7. 1996: Cascading Style Sheets (CSS Level 1) Recommendation</h3>
+                <p><strong>Event:</strong> W3C published the official recommendation for Cascading Style Sheets, Level 1 (CSS1), developed by Håkon Wium Lie and Bert Bos.</p>
+                <p><small>Enforced the architectural separation of document structure (HTML) from visual presentation and typographic styling, drastically reducing code duplication across the Web.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/CSS1/" target="_blank" rel="noopener">W3C CSS Level 1 Recommendation</a></li>
+                    <li><a href="https://www.w3.org/Style/CSS/history.en.html" target="_blank" rel="noopener">W3C: A Brief History of CSS</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m8">
+                <h3>8. 1998: Document Object Model (DOM Level 1) &amp; Web Search Indexing</h3>
+                <p><strong>Event:</strong> W3C published the DOM Level 1 specification, while Stanford researchers Larry Page and Sergey Brin incorporated Google, deploying the PageRank algorithm.</p>
+                <p><small>Standardized how programming languages navigate and mutate web document trees, while PageRank organized billions of web pages by hyperlink citation authority.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/REC-DOM-Level-1/" target="_blank" rel="noopener">W3C DOM Level 1 Recommendation</a></li>
+                    <li><a href="https://www.computerhistory.org/timeline/1998/" target="_blank" rel="noopener">Computer History Museum: 1998 Milestones</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m9">
+                <h3>9. 1999: XMLHttpRequest &amp; The Foundation of AJAX</h3>
+                <p><strong>Event:</strong> Microsoft introduced the XMLHttpRequest (XHR) interface within Internet Explorer 5, later standardized across all web browsers by the W3C.</p>
+                <p><small>Allowed web pages to exchange data asynchronously with a web server in the background, eliminating full page refreshes and powering modern single-page web applications (SPAs).</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/XMLHttpRequest/" target="_blank" rel="noopener">W3C XMLHttpRequest Specification</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener">MDN Web Docs: XMLHttpRequest API</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m10">
+                <h3>10. 2004: Emergence of "Web 2.0" and User-Generated Platforms</h3>
+                <p><strong>Event:</strong> The Web 2.0 conference crystallized the transformation of the Web from a static publishing catalogue into a participatory platform of user-generated content, blogs, wikis, and social networking.</p>
+                <p><small>Shifted the economic and architectural model of the Web toward distributed content creation, social connectivity, and dynamic interactive hypermedia.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/DesignIssues/WebPrinciples.html" target="_blank" rel="noopener">W3C: Principles of Web Design</a></li>
+                    <li><a href="https://www.computerhistory.org/revolution/the-web/20/387" target="_blank" rel="noopener">Computer History Museum: Web 2.0</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m11">
+                <h3>11. 2007: Mobile Web Boom &amp; Responsive Web Design</h3>
+                <p><strong>Event:</strong> The release of the original iPhone and mobile WebKit browser catalyzed the mobile web revolution, followed by Ethan Marcotte's 2010 formulation of Responsive Web Design (fluid grids, flexible images, and CSS media queries).</p>
+                <p><small>Ended the desktop-only assumption for web interfaces, compelling all web software to dynamically adapt across phone, tablet, and widescreen viewports.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/mobile/" target="_blank" rel="noopener">W3C Mobile Web &amp; Accessibility Standards</a></li>
+                    <li><a href="https://www.w3.org/TR/css3-mediaqueries/" target="_blank" rel="noopener">W3C Media Queries Specification</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m12">
+                <h3>12. 2014: HTML5 Reaches Official W3C Recommendation</h3>
+                <p><strong>Event:</strong> W3C officially published the HTML5 Recommendation, unifying modern markup syntax with rich native application programming interfaces (APIs).</p>
+                <p><small>Introduced native multimedia playback (<code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code>), 2D/3D graphics (<code>&lt;canvas&gt;</code>, WebGL), semantic elements (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>), and local storage, permanently rendering proprietary browser plugins obsolete.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/2014/REC-html5-20141028/" target="_blank" rel="noopener">W3C HTML5 Official Recommendation</a></li>
+                    <li><a href="https://www.w3.org/standards/webdesign/htmlcss" target="_blank" rel="noopener">W3C HTML &amp; CSS Standards Architecture</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m13">
+                <h3>13. 2015: HTTP/2, Let's Encrypt, and ECMAScript 2015 (ES6)</h3>
+                <p><strong>Event:</strong> IETF ratified HTTP/2 (RFC 7540) introducing binary multiplexing; the Internet Security Research Group (ISRG) launched Let's Encrypt for free automated SSL/TLS certificates; and Ecma International published ECMAScript 2015.</p>
+                <p><small>Modernized web transport performance, universalized HTTPS cryptographic encryption across the public Web, and modernized JavaScript syntax (classes, promises, modules).</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.rfc-editor.org/info/rfc7540" target="_blank" rel="noopener">IETF RFC 7540: HTTP/2 Protocol</a></li>
+                    <li><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener">ECMA-262 6th Edition (ES6) Specification</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m14">
+                <h3>14. 2017–2019: WebAssembly (Wasm) Becomes 4th W3C Standard</h3>
+                <p><strong>Event:</strong> Major browser vendors shipped WebAssembly in 2017, and W3C ratified WebAssembly Core Specification 1.0 as the fourth official standard language of the Web alongside HTML, CSS, and JavaScript.</p>
+                <p><small>Enables languages like C, C++, Rust, and Go to execute inside modern web browsers at near-native speed, bringing complex desktop apps, 3D games, and audio engines to the browser.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/wasm-core-1/" target="_blank" rel="noopener">W3C WebAssembly Core Specification</a></li>
+                    <li><a href="https://www.w3.org/press-releases/2019/wasm/" target="_blank" rel="noopener">W3C WebAssembly Ratification Press Release</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m15">
+                <h3>15. 2018: GDPR &amp; Global Web Privacy Governance</h3>
+                <p><strong>Event:</strong> The European Union's General Data Protection Regulation (GDPR) went into active legal enforcement, establishing fundamental statutory privacy rights for web users.</p>
+                <p><small>Mandated explicit user consent for tracking cookies, codified the right to data portability and deletion, and forced global web architectures to adopt privacy-by-design standards.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_en" target="_blank" rel="noopener">European Commission Data Protection Framework</a></li>
+                    <li><a href="https://www.w3.org/wiki/Privacy" target="_blank" rel="noopener">W3C Web Privacy Working Group</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+
+            <article id="m16">
+                <h3>16. 2022–Present: Generative Web &amp; Agentic Hypertext Interfaces</h3>
+                <p><strong>Event:</strong> Breakthrough advancements in Large Language Models and Web APIs catalyzed the emergence of generative, agentic web architectures and conversational interfaces.</p>
+                <p><small>Shifts web interaction from manual link traversal and keyword search toward real-time natural language synthesis, client-side neural execution (WebGPU), and autonomous agentic navigation.</small></p>
+                <p><strong>Sources:</strong></p>
+                <ul>
+                    <li><a href="https://www.w3.org/community/web-ai/" target="_blank" rel="noopener">W3C Web &amp; Machine Learning Community Group</a></li>
+                    <li><a href="https://www.computerhistory.org/revolution/artificial-intelligence/24" target="_blank" rel="noopener">Computer History Museum: AI Milestones</a></li>
+                </ul>
+                <p><small><a href="#top">Back to Summary Table</a></small></p>
+            </article>
+        </section>
+    </section>
 </article>
 {% endblock %}

@@ -48,13 +48,15 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
 
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-  --shadow-card-hover: 0 6px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+  --shadow-card: 0 4px 14px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 14px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06);
 
-  --transition-smooth: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-gentle: 0.48s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Utilize generous side space on larger monitors and laptops */
@@ -112,9 +114,349 @@ body {
   padding-inline: var(--space-6);
 }
 
+/* ==========================================================================
+   PAGE VIEW TRANSITIONS & PAGE LOADING PROGRESS BAR
+   ========================================================================== */
+
+/* Cross-Document View Transitions (W3C standard for Chromium browsers) */
+@view-transition {
+  navigation: auto;
+}
+
+.site-header {
+  view-transition-name: main-site-header;
+}
+
+.site-footer {
+  view-transition-name: main-site-footer;
+}
+
 .main-content {
   flex: 1;
   padding-block: var(--space-8) var(--space-12);
+  view-transition-name: main-site-content;
+  animation: pageEnterFade 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+::view-transition-old(main-site-content) {
+  animation: 120ms ease-out both pageViewExit;
+}
+
+::view-transition-new(main-site-content) {
+  animation: 200ms cubic-bezier(0.16, 1, 0.3, 1) both pageViewEnter;
+}
+
+@keyframes pageViewExit {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pageViewEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Universal Page Content Enter Animation (Hardware-accelerated, zero lag) */
+@keyframes pageEnterFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page navigating exit state (immediate, light tactile feedback) */
+body.is-page-navigating .main-content {
+  opacity: 0.65;
+  transform: translateY(-3px);
+  transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SEQUENTIAL CONTENT CASCADE (WELCOMING ENTRANCE)
+   ========================================================================== */
+
+@keyframes welcomingEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.975);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes welcomingEntranceSticky {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 1. Global / Top-Level Section Headings & Intro Banners */
+.main-content > header,
+.main-content > section > h1,
+.main-content > section > h2,
+.main-content > article > h1,
+.main-content > article > h2,
+.timeline-intro-banner,
+#weekly-work h2,
+.form-header,
+.quiz-page-header,
+article.profile .profile-header {
+  animation: welcomingEntrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.02s;
+}
+
+.section-lead-desc,
+.form-header-badge,
+.quiz-badge {
+  animation: welcomingEntrance 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.06s;
+}
+
+.form-meta-strip,
+.quiz-meta-strip {
+  animation: welcomingEntrance 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.10s;
+}
+
+/* 2. Sticky Stepper Roadmaps (Timeline Highways) */
+.form-stepper-roadmap,
+.quiz-stepper-roadmap {
+  animation: welcomingEntranceSticky 0.54s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.08s;
+}
+
+/* 3. Homepage Weekly Bento Cards (Sequential Cascade) */
+.weekly-bento-item {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.weekly-bento-item:nth-child(1) { animation-delay: 0.08s; }
+.weekly-bento-item:nth-child(2) { animation-delay: 0.15s; }
+.weekly-bento-item:nth-child(3) { animation-delay: 0.22s; }
+.weekly-bento-item:nth-child(4) { animation-delay: 0.29s; }
+.weekly-bento-item:nth-child(5) { animation-delay: 0.36s; }
+.weekly-bento-item:nth-child(6) { animation-delay: 0.43s; }
+.weekly-bento-item:nth-child(7) { animation-delay: 0.50s; }
+.weekly-bento-item:nth-child(8) { animation-delay: 0.57s; }
+.weekly-bento-item:nth-child(n+9) { animation-delay: 0.64s; }
+
+/* 4. Timeline Pages (Headings, Tables, Separators & All Milestones) */
+article:not(.profile) h3:first-of-type,
+article:not(.profile) > section:first-of-type > h3:first-of-type {
+  animation: welcomingEntrance 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.06s;
+}
+
+article:not(.profile) table {
+  animation: welcomingEntranceSticky 0.54s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.10s;
+}
+
+article:not(.profile) hr {
+  animation: welcomingEntrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.14s;
+}
+
+article:not(.profile) h3:nth-of-type(2),
+article:not(.profile) > section:first-of-type > h3:nth-of-type(2) {
+  animation: welcomingEntrance 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.18s;
+}
+
+article ol > li,
+#detailed-milestones > article {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#detailed-milestones > article:nth-of-type(1), article ol > li:nth-child(1) { animation-delay: 0.20s; }
+#detailed-milestones > article:nth-of-type(2), article ol > li:nth-child(2) { animation-delay: 0.25s; }
+#detailed-milestones > article:nth-of-type(3), article ol > li:nth-child(3) { animation-delay: 0.30s; }
+#detailed-milestones > article:nth-of-type(4), article ol > li:nth-child(4) { animation-delay: 0.35s; }
+#detailed-milestones > article:nth-of-type(5), article ol > li:nth-child(5) { animation-delay: 0.40s; }
+#detailed-milestones > article:nth-of-type(6), article ol > li:nth-child(6) { animation-delay: 0.45s; }
+#detailed-milestones > article:nth-of-type(7), article ol > li:nth-child(7) { animation-delay: 0.50s; }
+#detailed-milestones > article:nth-of-type(8), article ol > li:nth-child(8) { animation-delay: 0.55s; }
+#detailed-milestones > article:nth-of-type(9), article ol > li:nth-child(9) { animation-delay: 0.60s; }
+#detailed-milestones > article:nth-of-type(10), article ol > li:nth-child(10) { animation-delay: 0.65s; }
+#detailed-milestones > article:nth-of-type(11), article ol > li:nth-child(11) { animation-delay: 0.70s; }
+#detailed-milestones > article:nth-of-type(12), article ol > li:nth-child(12) { animation-delay: 0.75s; }
+#detailed-milestones > article:nth-of-type(13), article ol > li:nth-child(13) { animation-delay: 0.80s; }
+#detailed-milestones > article:nth-of-type(14), article ol > li:nth-child(14) { animation-delay: 0.85s; }
+#detailed-milestones > article:nth-of-type(15), article ol > li:nth-child(15) { animation-delay: 0.90s; }
+#detailed-milestones > article:nth-of-type(16), article ol > li:nth-child(16) { animation-delay: 0.95s; }
+#detailed-milestones > article:nth-of-type(n+17), article ol > li:nth-child(n+17) { animation-delay: 1.00s; }
+
+/* 5. Form Page (Cards & Submission Section) */
+.engineered-form .form-card:nth-of-type(1) {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.14s;
+}
+.engineered-form .form-card:nth-of-type(2) {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.21s;
+}
+.engineered-form .form-card:nth-of-type(3) {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.28s;
+}
+.engineered-form .form-card:nth-of-type(4) {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.35s;
+}
+.engineered-form .form-card:nth-of-type(5) {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.42s;
+}
+.engineered-form .submission-card {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.48s;
+}
+
+/* 6. Quiz Page (Panels & Results) */
+#quizPanel,
+#resultsPanel,
+.quiz-card {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.15s;
+}
+
+/* 7. Profile Display Page */
+article.profile section {
+  animation: welcomingEntrance 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+article.profile section:nth-of-type(1) { animation-delay: 0.10s; }
+article.profile section:nth-of-type(2) { animation-delay: 0.16s; }
+article.profile section:nth-of-type(3) { animation-delay: 0.22s; }
+article.profile section:nth-of-type(4) { animation-delay: 0.28s; }
+article.profile section:nth-of-type(5) { animation-delay: 0.34s; }
+article.profile section:nth-of-type(6) { animation-delay: 0.40s; }
+article.profile section:nth-of-type(n+7) { animation-delay: 0.46s; }
+
+article.profile > p:last-child {
+  animation: welcomingEntrance 0.54s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.50s;
+}
+
+/* 8. Site Footer (Initial Page Load Entrance) */
+.site-footer {
+  animation: welcomingEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.35s;
+}
+
+/* 9. Universal Content Elements Fallback */
+.main-content > p:not(.section-lead-desc),
+.main-content > blockquote,
+.main-content > .callout,
+.main-content > .alert,
+.main-content > pre {
+  animation: welcomingEntrance 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.12s;
+}
+
+/* Glowing Top Loading Progress Bar */
+.page-progress-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  view-transition-name: none;
+}
+
+.page-progress-loader.is-active {
+  opacity: 1;
+}
+
+.page-progress-loader .loader-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.page-progress-loader .loader-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 40%, #38bdf8 75%, #93c5fd 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.8), 0 0 6px #2563eb;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Luminous leading head that rides along the edge of the progress bar */
+.page-progress-loader .loader-bar::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 90px;
+  height: 9px;
+  background: radial-gradient(ellipse at center, rgba(147, 197, 253, 0.95) 0%, rgba(56, 189, 248, 0.5) 45%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Respect User Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
+  .main-content,
+  body.is-page-navigating .main-content,
+  .page-progress-loader,
+  .page-progress-loader .loader-bar,
+  .weekly-bento-item,
+  article ol > li,
+  #summary-section,
+  .summary-section,
+  article:not(.profile) table,
+  article:not(.profile) hr,
+  .form-stepper-roadmap,
+  .quiz-stepper-roadmap,
+  .engineered-form .form-card,
+  .engineered-form .submission-card,
+  #quizPanel,
+  #resultsPanel,
+  .quiz-card,
+  article.profile section,
+  article.profile > p:last-child,
+  .site-footer {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -128,6 +470,7 @@ body {
   position: relative;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(12, 24, 54, 0.25);
+  view-transition-name: main-site-header;
 }
 
 .header-container {
@@ -416,7 +759,9 @@ body {
 
 /* Allow sticky table timeline to stick through entire article (History pages only) */
 article:not(.profile) > section:first-of-type,
-#summary-table {
+section#summary-table,
+section#summary-section,
+.summary-section {
   display: contents;
 }
 
@@ -438,6 +783,15 @@ article:not(.profile) > section:first-of-type > h2 {
   border-bottom: 2px solid var(--cobalt-main);
 }
 
+.section-lead-desc {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}
+
 /* Sub-section headings (e.g. Quick Summary, Detailed Timeline) */
 article h3:not(ol h3):not(article h3) {
   font-family: var(--font-mono);
@@ -448,6 +802,45 @@ article h3:not(ol h3):not(article h3) {
   color: var(--ink-main);
   margin-top: var(--space-8);
   margin-bottom: var(--space-3);
+}
+
+/* Timeline Academic Introduction Banner */
+.timeline-intro-banner {
+  margin-bottom: var(--space-6);
+  padding: var(--space-5) var(--space-6);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--border-rule);
+  border-left: 5px solid var(--cobalt-main);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.timeline-intro-banner h2 {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cobalt-main);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--cobalt-main);
+}
+
+.timeline-intro-banner p.lead-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-main);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+.timeline-intro-banner p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 0;
 }
 
 /* Hide horizontal rules that break layout flow between cards */
@@ -766,10 +1159,10 @@ article > hr {
 
 /* Interactive Hover States */
 .weekly-card-link:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: #93c5fd;
-  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 
-              0 0 0 2px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 14px 30px -6px rgba(15, 23, 42, 0.1), 
+              0 0 0 2px rgba(37, 99, 235, 0.16);
 }
 
 .weekly-card-link:hover::before {
@@ -825,7 +1218,7 @@ article:not(.profile):not(:has(#detailed-milestones)) > section:not(:first-of-ty
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  scroll-margin-top: 150px;
+  scroll-margin-top: 225px;
 }
 
 article ol > li:hover,
@@ -1178,11 +1571,11 @@ a:hover {
    ========================================================================== */
 
 table {
-  display: block;
+  display: block !important;
   width: 100%;
   max-width: var(--container-max, 920px);
-  position: sticky;
-  top: 12px;
+  position: sticky !important;
+  top: 12px !important;
   margin-inline: auto;
   z-index: 85;
   overflow-x: auto;
@@ -1262,7 +1655,7 @@ tbody tr {
   border: 1px solid var(--border-rule, #cbd5e1);
   border-radius: 8px;
   padding: 10px 8px;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 2px 8px -1px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
@@ -1471,12 +1864,31 @@ tbody tr:hover td a {
   text-decoration: underline;
 }
 
-/* Offset for smooth jumping below the sticky header */
-[id],
+/* Absolute page top reset */
+body#top,
+#top {
+  scroll-margin-top: 0 !important;
+}
+
+/* Offset for smooth jumping below the sticky header & navigation */
+[id]:not(#top),
 article[id],
 section[id],
 li[id] {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 140px;
+}
+
+/* Timeline milestone cards jumped to from sticky timeline highway */
+article ol > li,
+article ol > li[id],
+#detailed-milestones > article,
+#detailed-milestones > article[id],
+article:not(.profile) > section[id],
+article:not(.profile) section[id^="m"],
+li[id^="m"],
+article[id^="m"],
+section[id^="m"] {
+  scroll-margin-top: 225px;
 }
 
 /* ==========================================================================
@@ -1529,6 +1941,7 @@ article:not(.profile):has(> section:nth-of-type(3)) > section:not(:first-of-type
   background: linear-gradient(135deg, #0c1836 0%, #172554 100%);
   padding-block: var(--space-8);
   box-shadow: 0 -4px 20px rgba(12, 24, 54, 0.12);
+  view-transition-name: main-site-footer;
 }
 
 .footer-container {
@@ -1693,6 +2106,7 @@ html, body {
     padding: 14px 14px;
     margin-bottom: 10px;
     border-left-width: 3px;
+    scroll-margin-top: 195px;
   }
 
   article ol > li > h3,

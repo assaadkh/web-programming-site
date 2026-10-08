@@ -3,12 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
     <title>{% block title %}Web Programming Portfolio — Assaad Khalife{% endblock %}</title>
     <link rel="stylesheet"
 	href="{{ url_for('static', filename='style.css') }}">
     {% block head %}{% endblock %}
 </head>
-<body>
+<body id="top">
+    <!-- Global Page Loading & Transition Bar -->
+    <div id="page-progress-loader" class="page-progress-loader" aria-hidden="true">
+        <div class="loader-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var loader = document.getElementById('page-progress-loader');
+            if (loader) {
+                loader.classList.add('is-active');
+                var bar = loader.querySelector('.loader-bar');
+                if (bar) {
+                    bar.style.transition = 'width 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+                    bar.style.width = '35%';
+                }
+            }
+        })();
+    </script>
     <header class="site-header">
         <div class="container header-container">
             <div class="header-brand">
@@ -78,6 +98,161 @@
     </footer>
 
     <script>
+        // ======================================================================
+        // Page Transitions & Loading Bar Controller
+        // ======================================================================
+        (function () {
+            const loader = document.getElementById('page-progress-loader');
+            if (!loader) return;
+            const bar = loader.querySelector('.loader-bar');
+            let finishTimer = null;
+            let safetyTimer = null;
+            let isNavigating = false;
+
+            function startExitTransition() {
+                if (!bar) return;
+                clearTimeout(finishTimer);
+                clearTimeout(safetyTimer);
+
+                // Add departure state: page content subtly dims
+                document.body.classList.add('is-page-navigating');
+                loader.classList.add('is-active');
+                loader.style.opacity = '1';
+
+                // Glide progress bar across during departure
+                bar.style.transition = 'width 0.15s ease-out';
+                bar.style.width = '60%';
+
+                // Safety timeout in case navigation is interrupted
+                safetyTimer = setTimeout(resetLoader, 5000);
+            }
+
+            function completeArrivalTransition() {
+                if (!bar) return;
+                clearTimeout(finishTimer);
+                clearTimeout(safetyTimer);
+
+                // Sweep progress bar smoothly to 100%
+                bar.style.transition = 'width 0.18s ease-out';
+                bar.style.width = '100%';
+
+                finishTimer = setTimeout(function () {
+                    loader.style.opacity = '0';
+                    setTimeout(function () {
+                        loader.classList.remove('is-active');
+                        document.body.classList.remove('is-page-navigating');
+                        bar.style.transition = 'none';
+                        bar.style.width = '0%';
+                        isNavigating = false;
+                    }, 200);
+                }, 100);
+            }
+
+            function resetLoader() {
+                if (!bar) return;
+                clearTimeout(finishTimer);
+                clearTimeout(safetyTimer);
+                isNavigating = false;
+                loader.classList.remove('is-active');
+                loader.style.opacity = '0';
+                document.body.classList.remove('is-page-navigating');
+                bar.style.transition = 'none';
+                bar.style.width = '0%';
+            }
+
+            // Finish arrival transition when page finishes loading
+            if (document.readyState === 'complete') {
+                completeArrivalTransition();
+            } else {
+                window.addEventListener('load', completeArrivalTransition);
+                document.addEventListener('DOMContentLoaded', function () {
+                    if (bar && (bar.style.width === '35%' || bar.style.width === '0%')) {
+                        bar.style.transition = 'width 0.26s ease-out';
+                        bar.style.width = '80%';
+                    }
+                });
+            }
+
+            // Critical: Reset when navigating back/forward via browser cache (bfcache)
+            window.addEventListener('pageshow', function (event) {
+                resetLoader();
+            });
+
+            // Handle internal navigation clicks with proper choreographed transition
+            document.addEventListener('click', function (e) {
+                const link = e.target.closest('a');
+                if (!link) return;
+
+                // Ignore modifier keys or secondary mouse clicks (let browser open new tab)
+                if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+                    return;
+                }
+
+                const rawHref = link.getAttribute('href');
+                if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('javascript:') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) {
+                    return;
+                }
+
+                if (link.target === '_blank' || link.hasAttribute('download')) {
+                    return;
+                }
+
+                let targetUrl;
+                try {
+                    targetUrl = new URL(link.href, window.location.href);
+                } catch (err) {
+                    return;
+                }
+
+                // Must be same origin
+                if (targetUrl.origin !== window.location.origin) {
+                    return;
+                }
+
+                // If target is exact current URL, ignore
+                if (targetUrl.href === window.location.href) {
+                    return;
+                }
+
+                // If same page with hash (in-page anchor scroll), don't intercept
+                if (targetUrl.pathname === window.location.pathname && targetUrl.search === window.location.search && targetUrl.hash) {
+                    return;
+                }
+
+                // Prevent multiple clicks while transition is active
+                if (isNavigating) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // PROPER CHOREOGRAPHED TRANSITION:
+                // 1. Intercept standard abrupt navigation
+                e.preventDefault();
+                isNavigating = true;
+
+                // 2. Play exit departure transition (content dissolves and bar glides)
+                startExitTransition();
+
+                // 3. Close open dropdowns gracefully
+                document.querySelectorAll('.nav-dropdown.open').forEach(function (d) {
+                    d.classList.remove('open');
+                    const b = d.querySelector('.nav-dropdown-btn');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                });
+
+                // 4. Navigate promptly (50ms click frame - zero perceptible lag)
+                setTimeout(function () {
+                    window.location.href = targetUrl.href;
+                }, 50);
+            });
+
+            // Trigger loader on form submissions
+            document.addEventListener('submit', function (e) {
+                if (e.defaultPrevented) return;
+                startExitTransition();
+            });
+        })();
+
         document.addEventListener('DOMContentLoaded', function () {
             // Dropdown Navigation Handler
             const dropdowns = document.querySelectorAll('.nav-dropdown');
