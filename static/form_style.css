@@ -747,3 +747,135 @@
   transform: translateY(-2px);
 }
 
+.hidden {
+  display: none !important;
+}
+
+.panel {
+  display: none;
+}
+
+.panel.open {
+  display: block;
+  animation: welcomingEntrance 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#review-panel {
+  scroll-margin-top: 165px;
+}
+
+#review-panel h2 {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink-main, #0f172a);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+#review-panel > p {
+  font-size: 0.95rem;
+  color: var(--ink-muted, #475569);
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-rule, #e2e8f0);
+  line-height: 1.5;
+}
+
+#review-panel section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+#review-panel section:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+#review-panel h3 {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cobalt-main, #1e40af);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+#review-panel dl {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0.65rem 1.25rem;
+  margin: 0;
+  align-items: baseline;
+}
+
+#review-panel dt {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-muted, #475569);
+}
+
+#review-panel dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-main, #0f172a);
+  word-break: break-word;
+}
+
+#review-skills,
+#review-software {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+#review-skills li,
+#review-software li {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+  display: inline-flex;
+  align-items: center;
+}
+
+#review-panel .action-buttons-group {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-rule, #e2e8f0);
+}
+
+@media (max-width: 768px) {
+  #review-panel section {
+    padding: 1rem 1rem;
+  }
+
+  #review-panel dl {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  #review-panel dt {
+    margin-top: 0.35rem;
+  }
+
+  #review-panel dd {
+    margin-bottom: 0.5rem;
+  }
+}
+
+

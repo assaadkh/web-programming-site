@@ -3,7 +3,7 @@
 {% block title %}Engineering Student Profile — Assaad Khalife{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}?v=2">
 {% endblock %}
 
 {% block content %}
@@ -58,7 +58,7 @@
         </div>
     </nav>
 
-    <form action="{{ url_for('submit_profile') }}" method="post" class="engineered-form">
+    <form id="profile-form" action="{{ url_for('submit_profile') }}" method="post" class="engineered-form" novalidate>
         <input type="hidden" name="form_version" value="2026-2027">
 
         <fieldset id="step-personal" class="form-card">
@@ -432,10 +432,122 @@
             </div>
 
             <div class="action-buttons-group">
-                <button type="submit" class="btn-engineered-submit">Submit Profile</button>
+                <button type="submit" id="submit-btn" class="btn-engineered-submit">Submit Profile</button>
                 <button type="reset" class="btn-engineered-reset">Clear Form</button>
             </div>
         </div>
     </form>
+
+    <section id="review-panel" class="panel form-card">
+        <h2>Review Your Profile</h2>
+        <p>Please review all your information below. Would you like to go back and edit, or confirm and submit?</p>
+
+        <section>
+            <h3>Personal Information</h3>
+            <dl>
+                <dt>Student ID</dt>
+                <dd id="review-student_id"></dd>
+
+                <dt>Full Name</dt>
+                <dd id="review-fullname"></dd>
+
+                <dt>USEK Email</dt>
+                <dd id="review-email"></dd>
+
+                <dt>Mobile Phone</dt>
+                <dd id="review-phone"></dd>
+
+                <dt>Date of Birth</dt>
+                <dd id="review-birthdate"></dd>
+
+                <dt>GitHub Profile</dt>
+                <dd id="review-portfolio"></dd>
+
+                <dt>GIN446 Website</dt>
+                <dd id="review-gin446"></dd>
+            </dl>
+        </section>
+
+        <section>
+            <h3>Academic Information</h3>
+            <dl>
+                <dt>Engineering Major</dt>
+                <dd id="review-major"></dd>
+
+                <dt>Current GPA / 100</dt>
+                <dd id="review-gpa"></dd>
+
+                <dt>Credits Completed</dt>
+                <dd id="review-credits"></dd>
+
+                <dt>Expected Graduation</dt>
+                <dd id="review-graduation"></dd>
+
+                <dt>Expected Graduation Month &amp; Year</dt>
+                <dd id="review-graduation_month"></dd>
+
+                <dt>Internship Completed</dt>
+                <dd id="review-internship_completed"></dd>
+            </dl>
+        </section>
+
+        <section>
+            <h3>Technical Background</h3>
+            <dl>
+                <dt>Engineering Experience Areas</dt>
+                <dd>
+                    <ul id="review-skills"></ul>
+                </dd>
+
+                <dt>Primary Programming Language</dt>
+                <dd id="review-language"></dd>
+
+                <dt>Engineering Software Used</dt>
+                <dd>
+                    <ul id="review-software"></ul>
+                </dd>
+            </dl>
+        </section>
+
+        <section>
+            <h3>Final Year Project</h3>
+            <dl>
+                <dt>Proposed Project Title</dt>
+                <dd id="review-project_title"></dd>
+
+                <dt>Project Description</dt>
+                <dd id="review-description"></dd>
+
+                <dt>Preferred Project Area</dt>
+                <dd id="review-project_area"></dd>
+
+                <dt>Preferred Team Size</dt>
+                <dd id="review-team_size"></dd>
+
+                <dt>Dashboard Color</dt>
+                <dd id="review-project_color"></dd>
+
+                <dt>Preferred Meeting Date</dt>
+                <dd id="review-meeting_date"></dd>
+
+                <dt>Preferred Meeting Time</dt>
+                <dd id="review-meeting_time"></dd>
+            </dl>
+        </section>
+
+        <section>
+            <h3>Confirmation</h3>
+            <dl>
+                <dt>Consent</dt>
+                <dd id="review-confirmation"></dd>
+            </dl>
+        </section>
+
+        <div class="action-buttons-group">
+            <button type="button" id="edit-btn" class="btn-engineered-reset">Edit</button>
+            <button type="button" id="confirm-btn" class="btn-engineered-submit">Confirm &amp; Submit</button>
+        </div>
+    </section>
 </div>
+<script src="{{ url_for('static', filename='profile_form.js') }}?v=2" defer></script>
 {% endblock %}
