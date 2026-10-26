@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Live Quiz (Fetch API) — Assaad Khalife{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}" />
+<style>
+  #loading {
+    font-style: italic;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+  #error {
+    color: #dc2626;
+    background-color: #fee2e2;
+    border: 1px solid #f87171;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quiz-page-wrapper">
+  <header class="quiz-page-header">
+    <div class="quiz-badge">USEK • School of Engineering • GIN446</div>
+    <h1 class="quiz-title">Live JavaScript Assessment (Fetch API)</h1>
+    <div class="quiz-meta-strip">
+      <span class="meta-tag">Dynamic API</span>
+      <span class="meta-tag">Interactive Highway</span>
+      <span class="meta-tag">Week 7 Deliverable</span>
+    </div>
+  </header>
+
+  <!-- Sticky Question Highway Roadmap (Timeline) -->
+  <nav class="quiz-stepper-roadmap" aria-label="Question Navigation Highway">
+    <div class="stepper-highway-track" id="questionHighway" role="tablist"></div>
+  </nav>
+
+  <section id="quizPanel">
+    <p id="loading" hidden>Loading…</p>
+    <p id="error" hidden></p>
+    <p id="progress"></p>
+    <h2 id="questionText"></h2>
+    <div id="choices" role="radiogroup" aria-labelledby="questionText"></div>
+    <div class="navigation">
+      <button type="button" id="firstBtn" onclick="goFirst()">First</button>
+      <button type="button" id="previousBtn" onclick="goPrevious()">Previous</button>
+      <button type="button" id="nextBtn" onclick="goNext()">Next</button>
+      <button type="button" id="lastBtn" onclick="goLast()">Last</button>
+    </div>
+    <button type="button" id="submitBtn" class="submit" onclick="submitQuiz()">Submit Quiz</button>
+    <button type="button" id="backToResultsBtn" class="retake-btn secondary-btn" onclick="backToResults()" style="display: none; width: 100%; margin-top: 1rem; justify-content: center;">← Back to Results Summary</button>
+  </section>
+
+  <section id="resultsPanel">
+    <h2>Quiz Results</h2>
+    <p id="scoreText"></p>
+    <p id="percentageText"></p>
+    <p id="performanceText"></p>
+    <div class="results-actions">
+      <button type="button" id="retakeBtn" class="retake-btn" onclick="retakeQuiz()">↻ Retake Quiz</button>
+    </div>
+    <h3>Correction</h3>
+    <pre id="correction"></pre>
+  </section>
+</div>
+<script src="{{ url_for('static', filename='live_quiz.js') }}" defer></script>
+{% endblock %}

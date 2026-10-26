@@ -38,7 +38,7 @@
             <nav class="site-nav" aria-label="Main Navigation">
                 <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
                 <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn nav-burger-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai', 'submit_profile', 'quiz'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="weeks-menu-btn" aria-label="Coursework Weeks Menu">
+                    <button type="button" class="nav-dropdown-btn nav-burger-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai', 'submit_profile', 'quiz', 'quiz.quiz_page'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="weeks-menu-btn" aria-label="Coursework Weeks Menu">
                         <span class="hamburger-icon" aria-hidden="true">
                             <span></span>
                             <span></span>
@@ -79,6 +79,15 @@
                         <a href="{{ url_for('quiz') }}" class="dropdown-item {% if request.endpoint == 'quiz' %}active{% endif %}" role="menuitem">
                             <span class="dropdown-item-title">Week 5 — JavaScript &amp; DOM Quiz</span>
                             <span class="dropdown-item-badge">Week 5</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url_for('quiz.quiz_page') }}" class="dropdown-item {% if request.endpoint == 'quiz.quiz_page' or request.path == '/live-quiz' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">Week 7 — Live Quiz with Fetch</span>
+                            <span class="dropdown-item-badge">Week 7</span>
+                        </a>
+                        <a href="{{ url_for('profile_validated') }}" class="dropdown-item {% if request.endpoint == 'profile_validated' %}active{% endif %}" role="menuitem">
+                            <span class="dropdown-item-title">Week 8 — Server Validation</span>
+                            <span class="dropdown-item-badge">Week 8</span>
                         </a>
                     </div>
                 </div>

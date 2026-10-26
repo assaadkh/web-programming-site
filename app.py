@@ -38,6 +38,11 @@ Example inside profile.html (which extends your base.html):
 
 from flask import Flask, render_template, request
 
+try:
+    from validators import validate_profile
+except ImportError:
+    validate_profile = None
+
 app = Flask(__name__)
 
 from quiz_api import init_quiz
@@ -53,6 +58,8 @@ def home():
         {"week": 2, "title": "History of the Web (AI)", "url": "/web-history-ai"},
         {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
         {"week": 5, "title": "JavaScript app", "url": "/quiz"},
+        {"week": 7, "title": "Live Quiz with Fetch", "url": "/live-quiz"},
+        {"week": 8, "title": "Profile Form (Server-Validated)", "url": "/profile-validated"},
     ]
     return render_template("index.html", weekly_work=weekly_work)
 
@@ -99,6 +106,36 @@ def submit_profile():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     return render_template("quiz.html")
+
+@app.route("/profile-validated", methods=["GET", "POST"])
+def profile_validated():
+    if request.method == "POST":
+        errors, cleaned = validate_profile(request.form)
+        if errors:
+            # something's wrong -> re-show the FORM with errors + what was typed
+            return render_template(
+                "profile-form-validated.html",
+                errors=errors,
+                data=request.form,
+                sel_skills=request.form.getlist("skills"),
+                sel_software=request.form.getlist("software"),
+            )
+        # all good -> show the profile
+        return render_template(
+            "profile.html",
+            data=cleaned,
+            skills=cleaned.get("skills", []),
+            software=cleaned.get("software", []),
+        )
+    # first visit (GET): empty form
+    return render_template(
+        "profile-form-validated.html",
+        errors={},
+        data={},
+        sel_skills=[],
+        sel_software=[],
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
