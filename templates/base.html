@@ -38,7 +38,7 @@
             <nav class="site-nav" aria-label="Main Navigation">
                 <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Home</a>
                 <div class="nav-dropdown">
-                    <button type="button" class="nav-dropdown-btn nav-burger-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai', 'submit_profile', 'quiz', 'quiz.quiz_page'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="weeks-menu-btn" aria-label="Coursework Weeks Menu">
+                    <button type="button" class="nav-dropdown-btn nav-burger-btn {% if request.endpoint in ['internet_history', 'web_history', 'internet_history_ai', 'web_history_ai', 'submit_profile', 'quiz', 'quiz.quiz_page', 'profile_validated'] %}active{% endif %}" aria-haspopup="true" aria-expanded="false" id="weeks-menu-btn" aria-label="Coursework Weeks Menu">
                         <span class="hamburger-icon" aria-hidden="true">
                             <span></span>
                             <span></span>
